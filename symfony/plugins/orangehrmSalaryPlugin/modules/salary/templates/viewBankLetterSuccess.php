@@ -43,7 +43,7 @@ if (isset( $_POST["btnSave"] ) && $_POST["btnSave"] == "Generate") {
     $query2 = "SELECT id FROM hs_hr_payroll WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "' ";
     $result2 = mysqli_query($connection, $query2) or die('could not get: ' . mysqli_error($connection));
     if (mysqli_num_rows($result2) > 0) {
-        $_SESSION["msg"] = '<div class="alert alert-danger">Payroll already generated for this month.</div>';
+        $_SESSION["msg"] = '<div class="alert alert-danger">Bank Letter already generated for this month.</div>';
 
     } else {
 
@@ -62,7 +62,7 @@ if (isset( $_POST["btnSave"] ) && $_POST["btnSave"] == "Generate") {
             $query = "INSERT INTO hs_hr_payroll SET salary_id = '" . $employee . "', status = '" . $payroll_status . "',date_added = '" . $payroll_date . "',perform_by = '" . $sf_user->getAttribute('auth.empNumber') . "'";
             $result = mysqli_query($connection, $query) or die('could not get: ' . mysqli_error($connection));
             if ($result) {
-                $_SESSION["msg"] = '<div class="alert alert-success alert-dismissible">Payroll Generated.</div>';
+                $_SESSION["msg"] = '<div class="alert alert-success alert-dismissible">Bank Letter Generated.</div>';
             }
 
         } else {
@@ -87,7 +87,7 @@ if($now > $_SESSION['expire'])
 <?php } ?>
 
 <div id="payroll" class="box">
-    <div class="head"><h1 id="taxHeading"><?php echo "Generate Payroll"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo "Generate Bank Letter"; ?></h1></div>
 
     <div class="inner">
 
@@ -132,7 +132,7 @@ if($now > $_SESSION['expire'])
 
 <div id="payroll_report" class="box">
 
-    <div class="head"><h1 id="taxHeading"><?php echo"Payroll Report"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo"Bank Letter"; ?></h1></div>
 
     <div class="inner">
         <div class="top">
@@ -150,7 +150,7 @@ if($now > $_SESSION['expire'])
 <div id="salarylist" class="box">
 
 
-    <div class="head"><h1 id="taxHeading"><?php echo "Company Payroll"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo "Company Bank Letter"; ?></h1></div>
 
     <div class="inner">
         <div class="top">

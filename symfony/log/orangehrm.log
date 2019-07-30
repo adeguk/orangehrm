@@ -9836,3 +9836,6 @@ Stack trace:
 [27-Jul-2019 14:46:39 Europe/Berlin] PHP  28. sfPHPView->renderFile() C:\xampp\htdocs\orangehrm\symfony\cache\orangehrm\prod\config\config_core_compile.yml.php:4407
 [27-Jul-2019 14:46:39 Europe/Berlin] PHP  29. require() C:\xampp\htdocs\orangehrm\symfony\cache\orangehrm\prod\config\config_core_compile.yml.php:4348
 [27-Jul-2019 14:46:39 Europe/Berlin] PHP  30. add_column_if_not_exist() C:\xampp\htdocs\orangehrm\symfony\plugins\orangehrmSalaryPlugin\modules\salary\templates\SalarySuccess.php:135
+[30-Jul-2019 07:58:19 Europe/Berlin] Action "salary/viewBankLetter" does not exist.
+[30-Jul-2019 09:57:35 Europe/Berlin] Action "salary/viewBankLetter" does not exist.
+[30-Jul-2019 10:21:39 Europe/Berlin] Action "salary/viewPayList" does not exist.

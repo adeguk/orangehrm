@@ -31,42 +31,42 @@ function CurrencyFormat($number)
 if (isset( $_POST["btnSave"] ) && $_POST["btnSave"] == "Generate") {
 
 
-    if (isset($_POST["payroll_status"]) && ((int)$_POST["payroll_status"] == 1 || (int)$_POST["payroll_status"] == 2))
-        $payroll_status = trim($_POST["payroll_status"]);
+    if (isset($_POST["paylist_status"]) && ((int)$_POST["paylist_status"] == 1 || (int)$_POST["paylist_status"] == 2))
+        $paylist_status = trim($_POST["paylist_status"]);
 
-    if (isset($_POST["payroll_date"]))
-        $payroll_date = $_POST['payroll_date'];
+    if (isset($_POST["paylist_date"]))
+        $paylist_date = $_POST['paylist_date'];
 
-    $payroll_month = date('m', strtotime($_POST['payroll_date']));
+    $payroll_month = date('m', strtotime($_POST['paylist_date']));
 
 
-    $query2 = "SELECT id FROM hs_hr_payroll WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "' ";
+    $query2 = "SELECT id FROM ohrm_paylist WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "' ";
     $result2 = mysqli_query($connection, $query2) or die('could not get: ' . mysqli_error($connection));
     if (mysqli_num_rows($result2) > 0) {
-        $_SESSION["msg"] = '<div class="alert alert-danger">Payroll already generated for this month.</div>';
+        $_SESSION["msg"] = '<div class="alert alert-danger">Pay List already generated for this month.</div>';
 
     } else {
 
-        $query = "SELECT id FROM hs_hr_emp_salarybreak_allowance WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "' ";
+        $query = "SELECT id FROM hs_hr_payroll WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "' ";
         $result = mysqli_query($connection, $query) or die('could not get: ' . mysqli_error($connection));
         if (mysqli_num_rows($result) > 0) {
 
 //get invoices data
-            $query = "SELECT id FROM hs_hr_emp_salarybreak_allowance WHERE EXTRACT(MONTH FROM date_added) = '" . $payroll_month . "'";
+            $query = "SELECT emp_number FROM hs_hr_employee WHERE account_number <> '' ";
             $result = mysqli_query($connection, $query) or die('could not get: ' . mysqli_error($connection));
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $salary_id[] = $row['id'];
+                $salary_id[] = $row['emp_number'];
             }
 
             $employee = implode(',', $salary_id);
-            $query = "INSERT INTO hs_hr_payroll SET salary_id = '" . $employee . "', status = '" . $payroll_status . "',date_added = '" . $payroll_date . "',perform_by = '" . $sf_user->getAttribute('auth.empNumber') . "'";
+            $query = "INSERT INTO ohrm_paylist SET salary_id = '" . $employee . "', status = '" . $paylist_status . "',date_added = '" . $paylist_date . "',perform_by = '" . $sf_user->getAttribute('auth.empNumber') . "'";
             $result = mysqli_query($connection, $query) or die('could not get: ' . mysqli_error($connection));
             if ($result) {
-                $_SESSION["msg"] = '<div class="alert alert-success alert-dismissible">Payroll Generated.</div>';
+                $_SESSION["msg"] = '<div class="alert alert-success alert-dismissible">Pay List Generated.</div>';
             }
 
         } else {
-            $_SESSION["msg"] = '<div class="alert alert-danger alert-dismissible  ">Salaries not generated for this month.</div>';
+            $_SESSION["msg"] = '<div class="alert alert-danger alert-dismissible  ">Payroll not generated for this month.</div>';
         }
     }
 }
@@ -87,7 +87,7 @@ if($now > $_SESSION['expire'])
 <?php } ?>
 
 <div id="payroll" class="box">
-    <div class="head"><h1 id="taxHeading"><?php echo "Generate Payroll"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo "Generate Pay List"; ?></h1></div>
 
     <div class="inner">
 
@@ -103,7 +103,7 @@ if($now > $_SESSION['expire'])
             <div class="form-group">
                 <label class="control-label col-sm-2">Date*</label>
                 <div class="col-sm-3">
-                   <input type="date" class="form-control" name="payroll_date">
+                   <input type="date" class="form-control" name="paylist_date">
                     <span class="error error_emp" style="margin-left: 1%"></span>
                 </div>
             </div>
@@ -113,10 +113,10 @@ if($now > $_SESSION['expire'])
 
                 <div class="col-sm-2">
                     <label class="custom-control-label" for="customRadioInline1">Generated</label>
-                    <input type="radio" id="enable" value="1" checked="checked" name="payroll_status" class="custom-control-input">
+                    <input type="radio" id="enable" value="1" checked="checked" name="paylist_status" class="custom-control-input">
 
                     <label class="custom-control-label" for="customRadioInline2">Paid</label>
-                    <input type="radio" id="disable" value="2" name="payroll_status" class="custom-control-input">
+                    <input type="radio" id="disable" value="2" name="paylist_status" class="custom-control-input">
                 </div>
             </div>
 
@@ -132,7 +132,7 @@ if($now > $_SESSION['expire'])
 
 <div id="payroll_report" class="box">
 
-    <div class="head"><h1 id="taxHeading"><?php echo"Payroll Report"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo"Pay List Report"; ?></h1></div>
 
     <div class="inner">
         <div class="top">
@@ -150,11 +150,10 @@ if($now > $_SESSION['expire'])
 <div id="salarylist" class="box">
 
 
-    <div class="head"><h1 id="taxHeading"><?php echo "Company Payroll"; ?></h1></div>
+    <div class="head"><h1 id="taxHeading"><?php echo "Company Pay List"; ?></h1></div>
 
     <div class="inner">
         <div class="top">
-
 
             <input type="button" class="" id="btnAdd" name="btnAdd" value="Add">
             <input type="submit" class="delete" id="btnDelete" name="btnDelete" value="Delete" data-toggle="modal" data-target="#deleteConfModal" disabled="disabled">
@@ -195,7 +194,7 @@ if($now > $_SESSION['expire'])
                 <?php
                 $connection = connect();
 
-                $query = "SELECT p.id,p.status, p.date_added, e.emp_firstname,e.emp_lastname,SUM(s.basic + s.transport + s.house_rent + s.medical + s.utilities) AS allowance, SUM(d.eobi+d.provident_fund+d.advance_or_loan+d.wh_tax) as deduction FROM hs_hr_emp_salarybreak_allowance s LEFT JOIN hs_hr_payroll p ON s.id IN (p.salary_id) LEFT JOIN hs_hr_emp_salarybreak_deduction d ON s.deduction_id = d.id LEFT JOIN hs_hr_employee e ON p.perform_by = e.emp_number";
+                $query = "SELECT l.id,l.status,l.date_added,e.emp_firstname,e.emp_lastname FROM ohrm_paylist l LEFT JOIN hs_hr_employee e  ON l.perform_by = e.emp_number";
                 $result = mysqli_query($connection,$query) or die($connection);
                 $num = mysqli_num_rows($result);
                 while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
@@ -373,7 +372,7 @@ if($now > $_SESSION['expire'])
         var basic = document.forms["frmTax"]["basic"];
         var deduction = document.forms["frmTax"]["deduction"];
         var employee = document.forms["frmTax"]["employee_name"];
-        var status = document.forms["frmTax"]["payroll_status"];
+        var status = document.forms["frmTax"]["paylist_status"];
         var otherAllowance = document.forms["frmTax"]["otherAllowance"];
         var otherAllowance_value = document.forms["frmTax"]["otherAllowance_value"];
         if (employee.value == "") {
