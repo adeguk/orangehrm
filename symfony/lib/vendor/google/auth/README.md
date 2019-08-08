@@ -95,7 +95,7 @@ $stack->push($middleware);
 // create the HTTP client
 $client = new Client([
   'handler' => $stack,
-  'base_url' => 'https://www.googleapis.com',
+  'base_uri' => 'https://www.googleapis.com',
   'auth' => 'google_auth'  // authorize all requests
 ]);
 
@@ -143,7 +143,7 @@ about the client or APIs on [StackOverflow](http://stackoverflow.com).
 
 [google-apis-php-client]: https://github.com/google/google-api-php-client
 [application default credentials]: https://developers.google.com/accounts/docs/application-default-credentials
-[contributing]: https://github.com/google/google-auth-library-php/tree/master/CONTRIBUTING.md
+[contributing]: https://github.com/google/google-auth-library-php/tree/master/.github/CONTRIBUTING.md
 [copying]: https://github.com/google/google-auth-library-php/tree/master/COPYING
 [Guzzle]: https://github.com/guzzle/guzzle
 [Guzzle 5]: http://docs.guzzlephp.org/en/5.3

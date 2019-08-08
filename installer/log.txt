@@ -1,50 +1,50 @@
 Client Info
 
-User Agent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
-Remote Address : ::1
+User Agent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36
+Remote Address : 127.0.0.1
 
 Server Info
 
-Host : localhost
-PHP Version : 7.1.29
-Server : Apache/2.4.39 (Win64) OpenSSL/1.0.2r PHP/7.1.29
-Admin : postmaster@localhost
+Host : career.loggcity.mc
+PHP Version : 7.2.11
+Server : Apache/2.4.27 (Win64) OpenSSL/1.0.2l PHP/7.2.11
+Admin : admin@example.com
 
-Document Root : C:/xampp/htdocs
-ROOT_PATH : C:\xampp\htdocs\orangehrm
+Document Root : C:/laragon/www/career.loggcity/
+ROOT_PATH : C:\laragon\www\career.loggcity
 
 OrangeHRM Installation Log
 
-Sat, 25 May 2019 12:34:59 +0200 DB Creation - Starting
-Sat, 25 May 2019 12:34:59 +0200 DB Creation - Done
-Sat, 25 May 2019 12:34:59 +0200 DB Creation - No Errors
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Starting
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Connected to the DB Server
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Selected the DB
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Reading DB Script
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Opened DB Script
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - Read DB script
-Sat, 25 May 2019 12:35:01 +0200 Fill Data Phase 1 - There are 288 Statements in the DB script
-Sat, 25 May 2019 12:38:15 +0200 MySQL Procedure Error:No database selected
-Sat, 25 May 2019 12:38:15 +0200 Fill Data Phase 1 - Done
-Sat, 25 May 2019 12:38:15 +0200 Fill Data Phase 1 - No Errors
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Starting
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Connected to the DB Server
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Selected the DB
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Reading DB Script
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Opened DB Script
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - Read DB script
-Sat, 25 May 2019 12:38:18 +0200 Fill Data Phase 2 - There are 167 Statements in the DB script
-Sat, 25 May 2019 12:38:32 +0200 MySQL Event Error:No database selected
-Sat, 25 May 2019 12:38:32 +0200 Fill Data Phase 1 - Connected to the DB Server
-Sat, 25 May 2019 12:38:33 +0200 Fill Data Phase 2 - Done
-Sat, 25 May 2019 12:38:33 +0200 Fill Data Phase 2 - No Errors
-Sat, 25 May 2019 12:38:36 +0200 Create DB user - Starting
-Sat, 25 May 2019 12:38:36 +0200 Create DB user - Done
-Sat, 25 May 2019 12:38:36 +0200 Create DB user - No Errors
-Sat, 25 May 2019 12:38:39 +0200 Create OrangeHRM user - Starting
-Sat, 25 May 2019 12:38:39 +0200 Create OrangeHRM user - Done
-Sat, 25 May 2019 12:38:39 +0200 Create OrangeHRM user - No Errors
-Sat, 25 May 2019 12:38:42 +0200 Write Conf - Starting
-Sat, 25 May 2019 12:38:42 +0200 Write Conf - Done
-Sat, 25 May 2019 12:38:42 +0200 Write Conf - No Errors
+Wed, 07 Aug 2019 17:01:25 +0000 DB Creation - Starting
+Wed, 07 Aug 2019 17:01:25 +0000 DB Creation - Done
+Wed, 07 Aug 2019 17:01:25 +0000 DB Creation - No Errors
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Starting
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Connected to the DB Server
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Selected the DB
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Reading DB Script
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Opened DB Script
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - Read DB script
+Wed, 07 Aug 2019 17:01:25 +0000 Fill Data Phase 1 - There are 288 Statements in the DB script
+Wed, 07 Aug 2019 17:03:31 +0000 MySQL Procedure Error:No database selected
+Wed, 07 Aug 2019 17:03:31 +0000 Fill Data Phase 1 - Done
+Wed, 07 Aug 2019 17:03:31 +0000 Fill Data Phase 1 - No Errors
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Starting
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Connected to the DB Server
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Selected the DB
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Reading DB Script
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Opened DB Script
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - Read DB script
+Wed, 07 Aug 2019 17:03:32 +0000 Fill Data Phase 2 - There are 167 Statements in the DB script
+Wed, 07 Aug 2019 17:03:38 +0000 MySQL Event Error:No database selected
+Wed, 07 Aug 2019 17:03:38 +0000 Fill Data Phase 1 - Connected to the DB Server
+Wed, 07 Aug 2019 17:03:39 +0000 Fill Data Phase 2 - Done
+Wed, 07 Aug 2019 17:03:39 +0000 Fill Data Phase 2 - No Errors
+Wed, 07 Aug 2019 17:03:39 +0000 Create DB user - Starting
+Wed, 07 Aug 2019 17:03:39 +0000 Create DB user - Done
+Wed, 07 Aug 2019 17:03:39 +0000 Create DB user - No Errors
+Wed, 07 Aug 2019 17:03:42 +0000 Create OrangeHRM user - Starting
+Wed, 07 Aug 2019 17:03:42 +0000 Create OrangeHRM user - Done
+Wed, 07 Aug 2019 17:03:42 +0000 Create OrangeHRM user - No Errors
+Wed, 07 Aug 2019 17:03:42 +0000 Write Conf - Starting
+Wed, 07 Aug 2019 17:03:42 +0000 Write Conf - Done
+Wed, 07 Aug 2019 17:03:42 +0000 Write Conf - No Errors

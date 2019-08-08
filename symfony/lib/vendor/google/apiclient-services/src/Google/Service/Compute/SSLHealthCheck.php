@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,7 @@ class Google_Service_Compute_SSLHealthCheck extends Google_Model
 {
   public $port;
   public $portName;
+  public $portSpecification;
   public $proxyHeader;
   public $request;
   public $response;
@@ -38,6 +39,14 @@ class Google_Service_Compute_SSLHealthCheck extends Google_Model
   public function getPortName()
   {
     return $this->portName;
+  }
+  public function setPortSpecification($portSpecification)
+  {
+    $this->portSpecification = $portSpecification;
+  }
+  public function getPortSpecification()
+  {
+    return $this->portSpecification;
   }
   public function setProxyHeader($proxyHeader)
   {

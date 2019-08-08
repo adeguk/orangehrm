@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,11 +17,25 @@
 
 class Google_Service_AndroidPublisher_Track extends Google_Collection
 {
-  protected $collection_key = 'versionCodes';
+  protected $collection_key = 'releases';
+  protected $releasesType = 'Google_Service_AndroidPublisher_TrackRelease';
+  protected $releasesDataType = 'array';
   public $track;
-  public $userFraction;
-  public $versionCodes;
 
+  /**
+   * @param Google_Service_AndroidPublisher_TrackRelease
+   */
+  public function setReleases($releases)
+  {
+    $this->releases = $releases;
+  }
+  /**
+   * @return Google_Service_AndroidPublisher_TrackRelease
+   */
+  public function getReleases()
+  {
+    return $this->releases;
+  }
   public function setTrack($track)
   {
     $this->track = $track;
@@ -29,21 +43,5 @@ class Google_Service_AndroidPublisher_Track extends Google_Collection
   public function getTrack()
   {
     return $this->track;
-  }
-  public function setUserFraction($userFraction)
-  {
-    $this->userFraction = $userFraction;
-  }
-  public function getUserFraction()
-  {
-    return $this->userFraction;
-  }
-  public function setVersionCodes($versionCodes)
-  {
-    $this->versionCodes = $versionCodes;
-  }
-  public function getVersionCodes()
-  {
-    return $this->versionCodes;
   }
 }

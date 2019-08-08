@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -23,19 +23,32 @@ class Google_Service_ServiceControl_ReportResponse extends Google_Collection
   protected $reportInfosType = 'Google_Service_ServiceControl_ReportInfo';
   protected $reportInfosDataType = 'array';
   public $serviceConfigId;
+  public $serviceRolloutId;
 
+  /**
+   * @param Google_Service_ServiceControl_ReportError
+   */
   public function setReportErrors($reportErrors)
   {
     $this->reportErrors = $reportErrors;
   }
+  /**
+   * @return Google_Service_ServiceControl_ReportError
+   */
   public function getReportErrors()
   {
     return $this->reportErrors;
   }
+  /**
+   * @param Google_Service_ServiceControl_ReportInfo
+   */
   public function setReportInfos($reportInfos)
   {
     $this->reportInfos = $reportInfos;
   }
+  /**
+   * @return Google_Service_ServiceControl_ReportInfo
+   */
   public function getReportInfos()
   {
     return $this->reportInfos;
@@ -47,5 +60,13 @@ class Google_Service_ServiceControl_ReportResponse extends Google_Collection
   public function getServiceConfigId()
   {
     return $this->serviceConfigId;
+  }
+  public function setServiceRolloutId($serviceRolloutId)
+  {
+    $this->serviceRolloutId = $serviceRolloutId;
+  }
+  public function getServiceRolloutId()
+  {
+    return $this->serviceRolloutId;
   }
 }

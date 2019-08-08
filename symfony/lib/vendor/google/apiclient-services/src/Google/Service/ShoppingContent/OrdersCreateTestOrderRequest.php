@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,10 +17,19 @@
 
 class Google_Service_ShoppingContent_OrdersCreateTestOrderRequest extends Google_Model
 {
+  public $country;
   public $templateName;
   protected $testOrderType = 'Google_Service_ShoppingContent_TestOrder';
   protected $testOrderDataType = '';
 
+  public function setCountry($country)
+  {
+    $this->country = $country;
+  }
+  public function getCountry()
+  {
+    return $this->country;
+  }
   public function setTemplateName($templateName)
   {
     $this->templateName = $templateName;
@@ -29,10 +38,16 @@ class Google_Service_ShoppingContent_OrdersCreateTestOrderRequest extends Google
   {
     return $this->templateName;
   }
+  /**
+   * @param Google_Service_ShoppingContent_TestOrder
+   */
   public function setTestOrder(Google_Service_ShoppingContent_TestOrder $testOrder)
   {
     $this->testOrder = $testOrder;
   }
+  /**
+   * @return Google_Service_ShoppingContent_TestOrder
+   */
   public function getTestOrder()
   {
     return $this->testOrder;

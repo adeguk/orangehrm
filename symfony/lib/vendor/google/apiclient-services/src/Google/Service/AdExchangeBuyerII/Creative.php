@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -29,13 +29,12 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   protected $correctionsDataType = 'array';
   public $creativeId;
   public $dealsStatus;
+  public $declaredClickThroughUrls;
   public $detectedAdvertiserIds;
   public $detectedDomains;
   public $detectedLanguages;
   public $detectedProductCategories;
   public $detectedSensitiveCategories;
-  protected $filteringStatsType = 'Google_Service_AdExchangeBuyerII_FilteringStats';
-  protected $filteringStatsDataType = '';
   protected $htmlType = 'Google_Service_AdExchangeBuyerII_HtmlContent';
   protected $htmlDataType = '';
   public $impressionTrackingUrls;
@@ -106,10 +105,16 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   {
     return $this->clickThroughUrls;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyerII_Correction
+   */
   public function setCorrections($corrections)
   {
     $this->corrections = $corrections;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyerII_Correction
+   */
   public function getCorrections()
   {
     return $this->corrections;
@@ -129,6 +134,14 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   public function getDealsStatus()
   {
     return $this->dealsStatus;
+  }
+  public function setDeclaredClickThroughUrls($declaredClickThroughUrls)
+  {
+    $this->declaredClickThroughUrls = $declaredClickThroughUrls;
+  }
+  public function getDeclaredClickThroughUrls()
+  {
+    return $this->declaredClickThroughUrls;
   }
   public function setDetectedAdvertiserIds($detectedAdvertiserIds)
   {
@@ -170,18 +183,16 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   {
     return $this->detectedSensitiveCategories;
   }
-  public function setFilteringStats(Google_Service_AdExchangeBuyerII_FilteringStats $filteringStats)
-  {
-    $this->filteringStats = $filteringStats;
-  }
-  public function getFilteringStats()
-  {
-    return $this->filteringStats;
-  }
+  /**
+   * @param Google_Service_AdExchangeBuyerII_HtmlContent
+   */
   public function setHtml(Google_Service_AdExchangeBuyerII_HtmlContent $html)
   {
     $this->html = $html;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyerII_HtmlContent
+   */
   public function getHtml()
   {
     return $this->html;
@@ -194,10 +205,16 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   {
     return $this->impressionTrackingUrls;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyerII_NativeContent
+   */
   public function setNative(Google_Service_AdExchangeBuyerII_NativeContent $native)
   {
     $this->native = $native;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyerII_NativeContent
+   */
   public function getNative()
   {
     return $this->native;
@@ -218,10 +235,16 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   {
     return $this->restrictedCategories;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyerII_ServingRestriction
+   */
   public function setServingRestrictions($servingRestrictions)
   {
     $this->servingRestrictions = $servingRestrictions;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyerII_ServingRestriction
+   */
   public function getServingRestrictions()
   {
     return $this->servingRestrictions;
@@ -242,10 +265,16 @@ class Google_Service_AdExchangeBuyerII_Creative extends Google_Collection
   {
     return $this->version;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyerII_VideoContent
+   */
   public function setVideo(Google_Service_AdExchangeBuyerII_VideoContent $video)
   {
     $this->video = $video;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyerII_VideoContent
+   */
   public function getVideo()
   {
     return $this->video;

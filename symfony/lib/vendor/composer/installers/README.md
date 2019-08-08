@@ -42,6 +42,7 @@ is not needed to install packages with these frameworks:
 | Bitrix       | `bitrix-module` (deprecated) <br>`bitrix-component` (deprecated) <br>`bitrix-theme` (deprecated) <br><br> `bitrix-d7-module` <br> `bitrix-d7-component` <br> `bitrix-d7-template`
 | CakePHP 2+   | **`cakephp-plugin`**
 | Chef         | `chef-cookbook`<br>`chef-role`
+| CiviCrm      | `civicrm-ext`
 | CCFramework  | `ccframework-ship`<br>`ccframework-theme`
 | Cockpit      | `cockpit-module`
 | CodeIgniter  | `codeigniter-library`<br>`codeigniter-third-party`<br>`codeigniter-module`
@@ -51,10 +52,11 @@ is not needed to install packages with these frameworks:
 | Decibel      | `decibel-app`
 | DokuWiki     | `dokuwiki-plugin`<br>`dokuwiki-template`
 | Dolibarr     | `dolibarr-module`
-| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-drush`
+| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-drush`<br>`drupal-custom-theme`<br>`drupal-custom-module`
 | Elgg         | `elgg-plugin`
-| Eliasis      | `eliasis-module`
+| Eliasis      | `eliasis-component`<br>`eliasis-module`<br>`eliasis-plugin`<br>`eliasis-template`
 | ExpressionEngine 3         | `ee3-addon`<br>`ee3-theme`
+| eZ Platform  | `ezplatform-assets`<br>`ezplatform-meta-assets`
 | FuelPHP v1.x | `fuel-module`<br>`fuel-package`<br/>`fuel-theme`
 | FuelPHP v2.x | `fuelphp-component`
 | Grav         | `grav-plugin`<br>`grav-theme`
@@ -66,18 +68,22 @@ is not needed to install packages with these frameworks:
 | Kirby        | **`kirby-plugin`**<br>`kirby-field`<br>`kirby-tag`
 | KodiCMS      | `kodicms-plugin`<br>`kodicms-media`
 | Kohana       | **`kohana-module`**
+| Lan Management System | `lms-plugin`<br>`lms-template`<br>`lms-document-template`<br>`lms-userpanel-module`
 | Laravel      | `laravel-library`
 | Lavalite     | `lavalite-theme`<br>`lavalite-package`
 | Lithium      | **`lithium-library`<br>`lithium-source`**
 | Magento      | `magento-library`<br>`magento-skin`<br>`magento-theme`
+| majima       | `majima-plugin`
 | Mako         | `mako-package`
 | Mautic       | `mautic-plugin`<br>`mautic-theme`
 | Maya         | `maya-module`
+| MODX         | `modx-extra`
 | MODX Evo     | `modxevo-snippet`<br>`modxevo-plugin`<br>`modxevo-module`<br>`modxevo-template`<br>`modxevo-lib`
 | MediaWiki    | `mediawiki-extension`
 | October      | **`october-module`<br>`october-plugin`<br>`october-theme`**
 | OntoWiki     | `ontowiki-extension`<br>`ontowiki-theme`<br>`ontowiki-translation`
 | OXID         | `oxid-module`<br>`oxid-theme`<br>`oxid-out`
+| Osclass      | `osclass-plugin`<br>`osclass-theme`<br>`osclass-language`
 | MODULEWork   | `modulework-module`
 | Moodle       | `moodle-*` (Please [check source](https://raw.githubusercontent.com/composer/installers/master/src/Composer/Installers/MoodleInstaller.php) for all supported types)
 | Piwik        | `piwik-plugin`
@@ -93,16 +99,18 @@ is not needed to install packages with these frameworks:
 | Roundcube    | `roundcube-plugin`
 | shopware     | `shopware-backend-plugin`<br/>`shopware-core-plugin`<br/>`shopware-frontend-plugin`<br/>`shopware-theme`<br/>`shopware-plugin`<br/>`shopware-frontend-theme`
 | SilverStripe | `silverstripe-module`<br>`silverstripe-theme`
+| SiteDirect   | `sitedirect-module`<br>`sitedirect-plugin`
 | SMF          | `smf-module`<br>`smf-theme`
 | SyDES        | `sydes-module`<br>`sydes-theme`
 | symfony1     | **`symfony1-plugin`**
 | Tusk         | `tusk-task`<br>`tusk-command`<br>`tusk-asset`
 | TYPO3 Flow   | `typo3-flow-package`<br>`typo3-flow-framework`<br>`typo3-flow-plugin`<br>`typo3-flow-site`<br>`typo3-flow-boilerplate`<br>`typo3-flow-build`
 | TYPO3 CMS    | `typo3-cms-extension` (Deprecated in this package, use the [TYPO3 CMS Installers](https://packagist.org/packages/typo3/cms-composer-installers) instead)
+| UserFrosting | `userfrosting-sprinkle`
 | Vanilla      | `vanilla-plugin`<br>`vanilla-theme`
 | Vgmcp        | `vgmcp-bundle`<br>`vgmcp-theme`
 | Wolf CMS     | `wolfcms-plugin`
-| WordPress    | <b>`wordpress-plugin`<br>`wordpress-theme`</b><br>`wordpress-muplugin`
+| WordPress    | <b>`wordpress-plugin`<br>`wordpress-theme`</b><br>`wordpress-muplugin`<br>`wordpress-dropin`
 | YAWIK        | `yawik-module`
 | Zend         | `zend-library`<br>`zend-extra`<br>`zend-module`
 | Zikula       | `zikula-module`<br>`zikula-theme`
@@ -198,6 +206,51 @@ will allow this:
 
 Please note the name entered into `installer-name` will be the final and will
 not be inflected.
+
+## Disabling installers
+
+There may be time when you want to disable one or more installers from `composer/installers`.
+For example, if you are managing a package or project that uses a framework specific installer that
+conflicts with `composer/installers` but also have a dependency on a package that depends on `composer/installers`.
+
+Installers can be disabled for your project by specifying the extra
+`installer-disable` property. If set to `true`, `"all"`, or `"*"` all installers
+will be disabled. 
+
+```json
+{
+    "extra": {
+        "installer-disable": true
+    }
+}
+```
+
+Otherwise a single installer or an array of installers may be specified.
+
+```json
+{
+    "extra": {
+        "installer-disable": [
+            "cakephp",
+            "drupal"
+        ]
+    }
+}
+```
+
+**Note:** Using a global disable value (`true`, `"all"`, or `"*"`) will take precedence over individual
+installer names if used in an array. The example below will disable all installers.
+
+```json
+{
+    "extra": {
+        "installer-disable": [
+          "drupal",
+          "all"
+        ]
+    }
+}
+```
 
 ## Should we allow dynamic package types or paths? No.
 

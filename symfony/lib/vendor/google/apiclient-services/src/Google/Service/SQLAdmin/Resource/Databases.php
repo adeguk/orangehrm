@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -79,8 +79,7 @@ class Google_Service_SQLAdmin_Resource_Databases extends Google_Service_Resource
    * Lists databases in the specified Cloud SQL instance.
    * (databases.listDatabases)
    *
-   * @param string $project Project ID of the project for which to list Cloud SQL
-   * instances.
+   * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.

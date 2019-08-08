@@ -10,9 +10,9 @@
  * @property string $firstName
  * @property string $middleName
  * @property string $nickName
- * @property string $motherName
- * @property string $fatherName
- * @property string $ntn
+    * @property string $motherName
+    * @property string $fatherName
+    * @property string $ntn
  * @property integer $smoker
  * @property string $ssn
  * @property string $sin
@@ -23,8 +23,8 @@
  * @property string $street2
  * @property string $city
  * @property string $country
- * @property string $allowance
- * @property string $deduction
+    * @property string $allowance
+    * @property string $deduction
  * @property string $otherName
  * @property string $otherAmount
  * @property string $province
@@ -112,9 +112,9 @@
  * @method string                    getFirstName()                  Returns the current record's "firstName" value
  * @method string                    getMiddleName()                 Returns the current record's "middleName" value
  * @method string                    getNickName()                   Returns the current record's "nickName" value
- * @method string                    getFatherName()                   Returns the current record's "fatherName" value
- * @method string                    getMotherName()                   Returns the current record's "motherName" value
- * @method string                    getNTN()                   Returns the current record's "ntn" value
+    * @method string                    getFatherName()                   Returns the current record's "fatherName" value
+    * @method string                    getMotherName()                   Returns the current record's "motherName" value
+    * @method string                    getNTN()                   Returns the current record's "ntn" value
  * @method integer                   getSmoker()                     Returns the current record's "smoker" value
  * @method string                    getSsn()                        Returns the current record's "ssn" value
  * @method string                    getSin()                        Returns the current record's "sin" value
@@ -127,8 +127,8 @@
  * @method string                    getCountry()                    Returns the current record's "country" value
  * @method string                    getProvince()                   Returns the current record's "province" value
  * @method string                    getEmployeeId()                 Returns the current record's "employeeId" value
- * @method string                    getAllowance()                 Returns the current record's "employeeId" value
- * @method string                    getDeduction()                 Returns the current record's "employeeId" value
+    * @method string                    getAllowance()                 Returns the current record's "employeeId" value
+    * @method string                    getDeduction()                 Returns the current record's "employeeId" value
  * @method string                    getEthnicRaceCode()             Returns the current record's "ethnic_race_code" value
  * @method date                      getEmpBirthday()                Returns the current record's "emp_birthday" value
  * @method integer                   getNationCode()                 Returns the current record's "nation_code" value
@@ -211,11 +211,11 @@
  * @method Employee                  setFirstName()                  Sets the current record's "firstName" value
  * @method Employee                  setMiddleName()                 Sets the current record's "middleName" value
  * @method Employee                  setNickName()                   Sets the current record's "nickName" value
- * @method Employee                  setFatherName()                   Sets the current record's "fatherName" value
- * @method Employee                  setAllowance()                   Sets the current record's "fatherName" value
- * @method Employee                  setDeduction()                   Sets the current record's "fatherName" value
- * @method Employee                  setMotherName()                   Sets the current record's "mothername" value
- * @method Employee                  setNTN()                   Sets the current record's "ntn" value
+    * @method Employee                  setFatherName()                   Sets the current record's "fatherName" value
+    * @method Employee                  setAllowance()                   Sets the current record's "fatherName" value
+    * @method Employee                  setDeduction()                   Sets the current record's "fatherName" value
+    * @method Employee                  setMotherName()                   Sets the current record's "mothername" value
+    * @method Employee                  setNTN()                           Sets the current record's "ntn" value
  * @method Employee                  setSmoker()                     Sets the current record's "smoker" value
  * @method Employee                  setSsn()                        Sets the current record's "ssn" value
  * @method Employee                  setSin()                        Sets the current record's "sin" value
@@ -339,7 +339,7 @@ abstract class BaseEmployee extends sfDoctrineRecord
              'notnull' => true,
              'length' => 100,
              ));
-        $this->hasColumn('emp_fathername as fatherName', 'string', 100, array(
+        /*$this->hasColumn('emp_fathername as fatherName', 'string', 100, array(
             'type' => 'string',
             'default' => '',
             'notnull' => true,
@@ -350,7 +350,7 @@ abstract class BaseEmployee extends sfDoctrineRecord
             'default' => '',
             'notnull' => true,
             'length' => 100,
-        ));
+        ));*/
         $this->hasColumn('emp_allowance as allowance', 'string', 100, array(
             'type' => 'string',
             'default' => '',

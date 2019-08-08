@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,10 +18,12 @@
 class Google_Service_Sheets_GridProperties extends Google_Model
 {
   public $columnCount;
+  public $columnGroupControlAfter;
   public $frozenColumnCount;
   public $frozenRowCount;
   public $hideGridlines;
   public $rowCount;
+  public $rowGroupControlAfter;
 
   public function setColumnCount($columnCount)
   {
@@ -30,6 +32,14 @@ class Google_Service_Sheets_GridProperties extends Google_Model
   public function getColumnCount()
   {
     return $this->columnCount;
+  }
+  public function setColumnGroupControlAfter($columnGroupControlAfter)
+  {
+    $this->columnGroupControlAfter = $columnGroupControlAfter;
+  }
+  public function getColumnGroupControlAfter()
+  {
+    return $this->columnGroupControlAfter;
   }
   public function setFrozenColumnCount($frozenColumnCount)
   {
@@ -62,5 +72,13 @@ class Google_Service_Sheets_GridProperties extends Google_Model
   public function getRowCount()
   {
     return $this->rowCount;
+  }
+  public function setRowGroupControlAfter($rowGroupControlAfter)
+  {
+    $this->rowGroupControlAfter = $rowGroupControlAfter;
+  }
+  public function getRowGroupControlAfter()
+  {
+    return $this->rowGroupControlAfter;
   }
 }

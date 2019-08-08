@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,16 +17,24 @@
 
 class Google_Service_SQLAdmin_InstancesListResponse extends Google_Collection
 {
-  protected $collection_key = 'items';
+  protected $collection_key = 'warnings';
   protected $itemsType = 'Google_Service_SQLAdmin_DatabaseInstance';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
+  protected $warningsType = 'Google_Service_SQLAdmin_ApiWarning';
+  protected $warningsDataType = 'array';
 
+  /**
+   * @param Google_Service_SQLAdmin_DatabaseInstance
+   */
   public function setItems($items)
   {
     $this->items = $items;
   }
+  /**
+   * @return Google_Service_SQLAdmin_DatabaseInstance
+   */
   public function getItems()
   {
     return $this->items;
@@ -46,5 +54,19 @@ class Google_Service_SQLAdmin_InstancesListResponse extends Google_Collection
   public function getNextPageToken()
   {
     return $this->nextPageToken;
+  }
+  /**
+   * @param Google_Service_SQLAdmin_ApiWarning
+   */
+  public function setWarnings($warnings)
+  {
+    $this->warnings = $warnings;
+  }
+  /**
+   * @return Google_Service_SQLAdmin_ApiWarning
+   */
+  public function getWarnings()
+  {
+    return $this->warnings;
   }
 }

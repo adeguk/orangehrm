@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,8 +17,12 @@
 
 class Google_Service_Drive_About extends Google_Collection
 {
-  protected $collection_key = 'folderColorPalette';
+  protected $collection_key = 'teamDriveThemes';
   public $appInstalled;
+  public $canCreateDrives;
+  public $canCreateTeamDrives;
+  protected $driveThemesType = 'Google_Service_Drive_AboutDriveThemes';
+  protected $driveThemesDataType = 'array';
   public $exportFormats;
   public $folderColorPalette;
   public $importFormats;
@@ -27,6 +31,8 @@ class Google_Service_Drive_About extends Google_Collection
   public $maxUploadSize;
   protected $storageQuotaType = 'Google_Service_Drive_AboutStorageQuota';
   protected $storageQuotaDataType = '';
+  protected $teamDriveThemesType = 'Google_Service_Drive_AboutTeamDriveThemes';
+  protected $teamDriveThemesDataType = 'array';
   protected $userType = 'Google_Service_Drive_User';
   protected $userDataType = '';
 
@@ -37,6 +43,36 @@ class Google_Service_Drive_About extends Google_Collection
   public function getAppInstalled()
   {
     return $this->appInstalled;
+  }
+  public function setCanCreateDrives($canCreateDrives)
+  {
+    $this->canCreateDrives = $canCreateDrives;
+  }
+  public function getCanCreateDrives()
+  {
+    return $this->canCreateDrives;
+  }
+  public function setCanCreateTeamDrives($canCreateTeamDrives)
+  {
+    $this->canCreateTeamDrives = $canCreateTeamDrives;
+  }
+  public function getCanCreateTeamDrives()
+  {
+    return $this->canCreateTeamDrives;
+  }
+  /**
+   * @param Google_Service_Drive_AboutDriveThemes
+   */
+  public function setDriveThemes($driveThemes)
+  {
+    $this->driveThemes = $driveThemes;
+  }
+  /**
+   * @return Google_Service_Drive_AboutDriveThemes
+   */
+  public function getDriveThemes()
+  {
+    return $this->driveThemes;
   }
   public function setExportFormats($exportFormats)
   {
@@ -86,18 +122,44 @@ class Google_Service_Drive_About extends Google_Collection
   {
     return $this->maxUploadSize;
   }
+  /**
+   * @param Google_Service_Drive_AboutStorageQuota
+   */
   public function setStorageQuota(Google_Service_Drive_AboutStorageQuota $storageQuota)
   {
     $this->storageQuota = $storageQuota;
   }
+  /**
+   * @return Google_Service_Drive_AboutStorageQuota
+   */
   public function getStorageQuota()
   {
     return $this->storageQuota;
   }
+  /**
+   * @param Google_Service_Drive_AboutTeamDriveThemes
+   */
+  public function setTeamDriveThemes($teamDriveThemes)
+  {
+    $this->teamDriveThemes = $teamDriveThemes;
+  }
+  /**
+   * @return Google_Service_Drive_AboutTeamDriveThemes
+   */
+  public function getTeamDriveThemes()
+  {
+    return $this->teamDriveThemes;
+  }
+  /**
+   * @param Google_Service_Drive_User
+   */
   public function setUser(Google_Service_Drive_User $user)
   {
     $this->user = $user;
   }
+  /**
+   * @return Google_Service_Drive_User
+   */
   public function getUser()
   {
     return $this->user;

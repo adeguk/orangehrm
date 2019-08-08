@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,11 +17,13 @@
 
 class Google_Service_Monitoring_Distribution extends Google_Collection
 {
-  protected $collection_key = 'bucketCounts';
+  protected $collection_key = 'exemplars';
   public $bucketCounts;
   protected $bucketOptionsType = 'Google_Service_Monitoring_BucketOptions';
   protected $bucketOptionsDataType = '';
   public $count;
+  protected $exemplarsType = 'Google_Service_Monitoring_Exemplar';
+  protected $exemplarsDataType = 'array';
   public $mean;
   protected $rangeType = 'Google_Service_Monitoring_Range';
   protected $rangeDataType = '';
@@ -35,10 +37,16 @@ class Google_Service_Monitoring_Distribution extends Google_Collection
   {
     return $this->bucketCounts;
   }
+  /**
+   * @param Google_Service_Monitoring_BucketOptions
+   */
   public function setBucketOptions(Google_Service_Monitoring_BucketOptions $bucketOptions)
   {
     $this->bucketOptions = $bucketOptions;
   }
+  /**
+   * @return Google_Service_Monitoring_BucketOptions
+   */
   public function getBucketOptions()
   {
     return $this->bucketOptions;
@@ -51,6 +59,20 @@ class Google_Service_Monitoring_Distribution extends Google_Collection
   {
     return $this->count;
   }
+  /**
+   * @param Google_Service_Monitoring_Exemplar
+   */
+  public function setExemplars($exemplars)
+  {
+    $this->exemplars = $exemplars;
+  }
+  /**
+   * @return Google_Service_Monitoring_Exemplar
+   */
+  public function getExemplars()
+  {
+    return $this->exemplars;
+  }
   public function setMean($mean)
   {
     $this->mean = $mean;
@@ -59,10 +81,16 @@ class Google_Service_Monitoring_Distribution extends Google_Collection
   {
     return $this->mean;
   }
+  /**
+   * @param Google_Service_Monitoring_Range
+   */
   public function setRange(Google_Service_Monitoring_Range $range)
   {
     $this->range = $range;
   }
+  /**
+   * @return Google_Service_Monitoring_Range
+   */
   public function getRange()
   {
     return $this->range;

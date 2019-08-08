@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,12 +18,29 @@
 class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1TrainingOutput extends Google_Collection
 {
   protected $collection_key = 'trials';
+  protected $builtInAlgorithmOutputType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1BuiltInAlgorithmOutput';
+  protected $builtInAlgorithmOutputDataType = '';
   public $completedTrialCount;
   public $consumedMLUnits;
+  public $isBuiltInAlgorithmJob;
   public $isHyperparameterTuningJob;
   protected $trialsType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1HyperparameterOutput';
   protected $trialsDataType = 'array';
 
+  /**
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1BuiltInAlgorithmOutput
+   */
+  public function setBuiltInAlgorithmOutput(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1BuiltInAlgorithmOutput $builtInAlgorithmOutput)
+  {
+    $this->builtInAlgorithmOutput = $builtInAlgorithmOutput;
+  }
+  /**
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1BuiltInAlgorithmOutput
+   */
+  public function getBuiltInAlgorithmOutput()
+  {
+    return $this->builtInAlgorithmOutput;
+  }
   public function setCompletedTrialCount($completedTrialCount)
   {
     $this->completedTrialCount = $completedTrialCount;
@@ -40,6 +57,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1TrainingOutput ex
   {
     return $this->consumedMLUnits;
   }
+  public function setIsBuiltInAlgorithmJob($isBuiltInAlgorithmJob)
+  {
+    $this->isBuiltInAlgorithmJob = $isBuiltInAlgorithmJob;
+  }
+  public function getIsBuiltInAlgorithmJob()
+  {
+    return $this->isBuiltInAlgorithmJob;
+  }
   public function setIsHyperparameterTuningJob($isHyperparameterTuningJob)
   {
     $this->isHyperparameterTuningJob = $isHyperparameterTuningJob;
@@ -48,10 +73,16 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1TrainingOutput ex
   {
     return $this->isHyperparameterTuningJob;
   }
+  /**
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1HyperparameterOutput
+   */
   public function setTrials($trials)
   {
     $this->trials = $trials;
   }
+  /**
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1HyperparameterOutput
+   */
   public function getTrials()
   {
     return $this->trials;

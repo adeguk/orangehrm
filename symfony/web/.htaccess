@@ -21,7 +21,7 @@
   RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
 
-<ifModule mod_headers.c>
+<IfModule mod_headers.c>
     # security
     Header set X-Content-Type-Options nosniff
     Header set X-XSS-Protection "1; mode=block"

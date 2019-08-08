@@ -107,7 +107,7 @@ class Doctrine_Relation_Access_TestCase extends Doctrine_UnitTestCase {
         $this->assertEqual('owner1', $check2->get('name'));
 
         $this->assertTrue(isset($owner1->Data_File));
-        $this->assertFalse(isset($owner2->Data_File));;
+        $this->assertFalse(isset($owner2->Data_File));
         $this->assertIdentical($check, $owner1);
         $this->assertEqual($owner1->get('id'), $check->get('id'));
     }

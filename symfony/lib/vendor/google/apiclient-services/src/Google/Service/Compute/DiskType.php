@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,6 +25,7 @@ class Google_Service_Compute_DiskType extends Google_Model
   public $id;
   public $kind;
   public $name;
+  public $region;
   public $selfLink;
   public $validDiskSize;
   public $zone;
@@ -45,10 +46,16 @@ class Google_Service_Compute_DiskType extends Google_Model
   {
     return $this->defaultDiskSizeGb;
   }
+  /**
+   * @param Google_Service_Compute_DeprecationStatus
+   */
   public function setDeprecated(Google_Service_Compute_DeprecationStatus $deprecated)
   {
     $this->deprecated = $deprecated;
   }
+  /**
+   * @return Google_Service_Compute_DeprecationStatus
+   */
   public function getDeprecated()
   {
     return $this->deprecated;
@@ -84,6 +91,14 @@ class Google_Service_Compute_DiskType extends Google_Model
   public function getName()
   {
     return $this->name;
+  }
+  public function setRegion($region)
+  {
+    $this->region = $region;
+  }
+  public function getRegion()
+  {
+    return $this->region;
   }
   public function setSelfLink($selfLink)
   {

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -65,7 +65,7 @@ class Google_Service_Plus_Resource_People extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_Plus_PeopleFeed");
   }
   /**
-   * List all of the people in the specified collection for a particular activity.
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
    * (people.listByActivity)
    *
    * @param string $activityId The ID of the activity to get the list of people
@@ -88,7 +88,8 @@ class Google_Service_Plus_Resource_People extends Google_Service_Resource
     return $this->call('listByActivity', array($params), "Google_Service_Plus_PeopleFeed");
   }
   /**
-   * Search all public profiles. (people.search)
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
+   * (people.search)
    *
    * @param string $query Specify a query string for full text search of public
    * text in all profiles.

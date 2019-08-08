@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -33,6 +33,7 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public $clickThroughUrl;
   protected $correctionsType = 'Google_Service_AdExchangeBuyer_CreativeCorrections';
   protected $correctionsDataType = 'array';
+  public $creativeStatusIdentityType;
   public $dealsStatus;
   public $detectedDomains;
   protected $filteringReasonsType = 'Google_Service_AdExchangeBuyer_CreativeFilteringReasons';
@@ -52,6 +53,7 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public $vendorType;
   public $version;
   public $videoURL;
+  public $videoVastXML;
   public $width;
 
   public function setHTMLSnippet($hTMLSnippet)
@@ -134,13 +136,27 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   {
     return $this->clickThroughUrl;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyer_CreativeCorrections
+   */
   public function setCorrections($corrections)
   {
     $this->corrections = $corrections;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyer_CreativeCorrections
+   */
   public function getCorrections()
   {
     return $this->corrections;
+  }
+  public function setCreativeStatusIdentityType($creativeStatusIdentityType)
+  {
+    $this->creativeStatusIdentityType = $creativeStatusIdentityType;
+  }
+  public function getCreativeStatusIdentityType()
+  {
+    return $this->creativeStatusIdentityType;
   }
   public function setDealsStatus($dealsStatus)
   {
@@ -158,10 +174,16 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   {
     return $this->detectedDomains;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyer_CreativeFilteringReasons
+   */
   public function setFilteringReasons(Google_Service_AdExchangeBuyer_CreativeFilteringReasons $filteringReasons)
   {
     $this->filteringReasons = $filteringReasons;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyer_CreativeFilteringReasons
+   */
   public function getFilteringReasons()
   {
     return $this->filteringReasons;
@@ -198,10 +220,16 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   {
     return $this->languages;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyer_CreativeNativeAd
+   */
   public function setNativeAd(Google_Service_AdExchangeBuyer_CreativeNativeAd $nativeAd)
   {
     $this->nativeAd = $nativeAd;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyer_CreativeNativeAd
+   */
   public function getNativeAd()
   {
     return $this->nativeAd;
@@ -238,10 +266,16 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   {
     return $this->sensitiveCategories;
   }
+  /**
+   * @param Google_Service_AdExchangeBuyer_CreativeServingRestrictions
+   */
   public function setServingRestrictions($servingRestrictions)
   {
     $this->servingRestrictions = $servingRestrictions;
   }
+  /**
+   * @return Google_Service_AdExchangeBuyer_CreativeServingRestrictions
+   */
   public function getServingRestrictions()
   {
     return $this->servingRestrictions;
@@ -269,6 +303,14 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public function getVideoURL()
   {
     return $this->videoURL;
+  }
+  public function setVideoVastXML($videoVastXML)
+  {
+    $this->videoVastXML = $videoVastXML;
+  }
+  public function getVideoVastXML()
+  {
+    return $this->videoVastXML;
   }
   public function setWidth($width)
   {

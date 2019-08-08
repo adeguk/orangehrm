@@ -31,7 +31,8 @@
  * @version     $Revision$
  * @link        www.doctrine-project.org
  * @since       1.0
-
+ * @method mixed findBy*(mixed $value) magic finders; @see __call()
+ * @method mixed findOneBy*(mixed $value) magic finders; @see __call()
  */
 class Doctrine_Table extends Doctrine_Configurable implements Countable, Serializable
 {
@@ -355,7 +356,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
             }
             $ref = new ReflectionClass($parent);
 
-            if ($ref->isAbstract() || ! $class->isSubClassOf($parent)) {
+            if ($ref->isAbstract() || ! $class->isSubclassOf($parent)) {
                 continue;
             }
             $parentTable = $this->_conn->getTable($parent);
@@ -1494,8 +1495,9 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
      * This method assign the connection which this table will use
      * to create queries.
      *
-     * @param Doctrine_Connection      a connection object
-     * @return Doctrine_Table           this object; fluent interface
+     * @param Doctrine_Connection $conn a connection object
+     *
+     * @return Doctrine_Table this object; fluent interface
      */
     public function setConnection(Doctrine_Connection $conn)
     {
@@ -1524,11 +1526,12 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
      * this component. The record is not created in the database until you
      * call Doctrine_Record::save().
      *
-     * @param $array             an array where keys are field names and
-     *                           values representing field values. Can contain
-     *                           also related components;
-     *                           @see Doctrine_Record::fromArray()
-     * @return Doctrine_Record   the created record object
+     * @param array $array an array where keys are field names and
+     *                     values representing field values. Can contain
+     *                     also related components;
+     *                     @see Doctrine_Record::fromArray()
+     *
+     * @return Doctrine_Record the created record object
      */
     public function create(array $array = array())
     {
@@ -1542,9 +1545,12 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
      * Adds a named query in the query registry.
      *
      * This methods register a query object with a name to use in the future.
+     *
      * @see createNamedQuery()
-     * @param $queryKey                       query key name to use for storage
+     *
+     * @param string                $queryKey query key name to use for storage
      * @param string|Doctrine_Query $query    DQL string or object
+     *
      * @return void
      */
     public function addNamedQuery($queryKey, $query)
@@ -1590,7 +1596,8 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
      *                            Otherwise this argument expect an array of query params.
      * @param int $hydrationMode  Optional Doctrine_Core::HYDRATE_ARRAY or Doctrine_Core::HYDRATE_RECORD if
      *                            first argument is a NamedQuery
-     * @return mixed              Doctrine_Collection, array, Doctrine_Record or false if no result
+     *
+     * @return Doctrine_Collection|array|Doctrine_Record|false Doctrine_Collection, array, Doctrine_Record or false if no result
      */
     public function find()
     {
@@ -2648,6 +2655,8 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable, Seriali
                     || $name == 'fixed'
                     || $name == 'comment'
                     || $name == 'alias'
+                    || $name == 'charset'
+                    || $name == 'collation'
                     || $name == 'extra') {
                 continue;
             }

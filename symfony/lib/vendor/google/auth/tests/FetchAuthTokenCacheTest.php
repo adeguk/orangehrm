@@ -43,6 +43,10 @@ class FetchAuthTokenCacheTest extends BaseTest
         $cachedValue = '2/abcdef1234567890';
         $this->mockCacheItem
             ->expects($this->once())
+            ->method('isHit')
+            ->will($this->returnValue(true));
+        $this->mockCacheItem
+            ->expects($this->once())
             ->method('get')
             ->will($this->returnValue($cachedValue));
         $this->mockCache
@@ -73,6 +77,10 @@ class FetchAuthTokenCacheTest extends BaseTest
         $prefix = 'test_prefix_';
         $cacheKey = 'myKey';
         $cachedValue = '2/abcdef1234567890';
+        $this->mockCacheItem
+            ->expects($this->once())
+            ->method('isHit')
+            ->will($this->returnValue(true));
         $this->mockCacheItem
             ->expects($this->once())
             ->method('get')
@@ -142,5 +150,81 @@ class FetchAuthTokenCacheTest extends BaseTest
         );
         $accessToken = $cachedFetcher->fetchAuthToken();
         $this->assertEquals($accessToken, ['access_token' => $token]);
+    }
+
+    public function testGetLastReceivedToken()
+    {
+        $token = 'foo';
+
+        $mockFetcher = $this->prophesize('Google\Auth\FetchAuthTokenInterface');
+        $mockFetcher->getLastReceivedToken()
+            ->shouldBeCalled()
+            ->willReturn([
+                'access_token' => $token
+            ]);
+
+        $fetcher = new FetchAuthTokenCache(
+            $mockFetcher->reveal(),
+            [],
+            $this->mockCache
+        );
+
+        $this->assertEquals($token, $fetcher->getLastReceivedToken()['access_token']);
+    }
+
+    public function testGetClientName()
+    {
+        $name = 'test@example.com';
+
+        $mockFetcher = $this->prophesize('Google\Auth\SignBlobInterface');
+        $mockFetcher->getClientName(null)
+            ->shouldBeCalled()
+            ->willReturn($name);
+
+        $fetcher = new FetchAuthTokenCache(
+            $mockFetcher->reveal(),
+            [],
+            $this->mockCache
+        );
+
+        $this->assertEquals($name, $fetcher->getClientName());
+    }
+
+    public function testSignBlob()
+    {
+        $stringToSign = 'foobar';
+        $signature = 'helloworld';
+
+        $mockFetcher = $this->prophesize('Google\Auth\SignBlobInterface');
+        $mockFetcher->willImplement('Google\Auth\FetchAuthTokenInterface');
+        $mockFetcher->signBlob($stringToSign, true)
+            ->shouldBeCalled()
+            ->willReturn($signature);
+
+        $fetcher = new FetchAuthTokenCache(
+            $mockFetcher->reveal(),
+            [],
+            $this->mockCache
+        );
+
+        $this->assertEquals($signature, $fetcher->signBlob($stringToSign, true));
+    }
+
+    /**
+     * @expectedException RuntimeException
+     */
+    public function testSignBlobInvalidFetcher()
+    {
+        $mockFetcher = $this->prophesize('Google\Auth\FetchAuthTokenInterface');
+        $mockFetcher->signBlob('test')
+            ->shouldNotbeCalled();
+
+        $fetcher = new FetchAuthTokenCache(
+            $mockFetcher->reveal(),
+            [],
+            $this->mockCache
+        );
+
+        $this->assertEquals($signature, $fetcher->signBlob('test'));
     }
 }

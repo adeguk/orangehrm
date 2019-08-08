@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -41,7 +41,6 @@ class Google_Service_Surveys extends Google_Service
   const USERINFO_EMAIL =
       "https://www.googleapis.com/auth/userinfo.email";
 
-  public $mobileapppanels;
   public $results;
   public $surveys;
   
@@ -55,56 +54,10 @@ class Google_Service_Surveys extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
     $this->servicePath = 'surveys/v2/';
+    $this->batchPath = 'batch/surveys/v2';
     $this->version = 'v2';
     $this->serviceName = 'surveys';
 
-    $this->mobileapppanels = new Google_Service_Surveys_Resource_Mobileapppanels(
-        $this,
-        $this->serviceName,
-        'mobileapppanels',
-        array(
-          'methods' => array(
-            'get' => array(
-              'path' => 'mobileAppPanels/{panelId}',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'panelId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'list' => array(
-              'path' => 'mobileAppPanels',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'startIndex' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'token' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
-            ),'update' => array(
-              'path' => 'mobileAppPanels/{panelId}',
-              'httpMethod' => 'PUT',
-              'parameters' => array(
-                'panelId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),
-          )
-        )
-    );
     $this->results = new Google_Service_Surveys_Resource_Results(
         $this,
         $this->serviceName,

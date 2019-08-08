@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,14 +17,29 @@
 
 class Google_Service_Slides_Line extends Google_Model
 {
+  public $lineCategory;
   protected $linePropertiesType = 'Google_Service_Slides_LineProperties';
   protected $linePropertiesDataType = '';
   public $lineType;
 
+  public function setLineCategory($lineCategory)
+  {
+    $this->lineCategory = $lineCategory;
+  }
+  public function getLineCategory()
+  {
+    return $this->lineCategory;
+  }
+  /**
+   * @param Google_Service_Slides_LineProperties
+   */
   public function setLineProperties(Google_Service_Slides_LineProperties $lineProperties)
   {
     $this->lineProperties = $lineProperties;
   }
+  /**
+   * @return Google_Service_Slides_LineProperties
+   */
   public function getLineProperties()
   {
     return $this->lineProperties;

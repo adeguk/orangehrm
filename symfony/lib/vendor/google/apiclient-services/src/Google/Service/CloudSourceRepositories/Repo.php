@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,13 +20,21 @@ class Google_Service_CloudSourceRepositories_Repo extends Google_Model
   protected $mirrorConfigType = 'Google_Service_CloudSourceRepositories_MirrorConfig';
   protected $mirrorConfigDataType = '';
   public $name;
+  protected $pubsubConfigsType = 'Google_Service_CloudSourceRepositories_PubsubConfig';
+  protected $pubsubConfigsDataType = 'map';
   public $size;
   public $url;
 
+  /**
+   * @param Google_Service_CloudSourceRepositories_MirrorConfig
+   */
   public function setMirrorConfig(Google_Service_CloudSourceRepositories_MirrorConfig $mirrorConfig)
   {
     $this->mirrorConfig = $mirrorConfig;
   }
+  /**
+   * @return Google_Service_CloudSourceRepositories_MirrorConfig
+   */
   public function getMirrorConfig()
   {
     return $this->mirrorConfig;
@@ -38,6 +46,20 @@ class Google_Service_CloudSourceRepositories_Repo extends Google_Model
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_CloudSourceRepositories_PubsubConfig
+   */
+  public function setPubsubConfigs($pubsubConfigs)
+  {
+    $this->pubsubConfigs = $pubsubConfigs;
+  }
+  /**
+   * @return Google_Service_CloudSourceRepositories_PubsubConfig
+   */
+  public function getPubsubConfigs()
+  {
+    return $this->pubsubConfigs;
   }
   public function setSize($size)
   {

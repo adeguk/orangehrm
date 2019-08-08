@@ -144,8 +144,8 @@ class EmployeePersonalDetailsForm extends BaseForm {
             'chkSmokeFlag' => new sfWidgetFormInputCheckbox(),
             'txtLicExpDate' => new ohrmWidgetDatePicker(array(), array('id' => 'personal_txtLicExpDate')),
             'txtMilitarySer' => new sfWidgetFormInputText(),
-            'txtFatherName' => new sfWidgetFormInputText(),
-            'txtMotherName' => new sfWidgetFormInputText(),
+          #  'txtFatherName' => new sfWidgetFormInputText(),
+          #  'txtMotherName' => new sfWidgetFormInputText(),
             'txtNTN' => new sfWidgetFormInputText(),
         );
 
@@ -154,8 +154,8 @@ class EmployeePersonalDetailsForm extends BaseForm {
         $widgets['txtEmpFirstName']->setAttribute('value', $this->employee->firstName);
         $widgets['txtEmpMiddleName']->setAttribute('value', $this->employee->middleName);
         $widgets['txtEmpNickName']->setAttribute('value', $this->employee->nickName);
-        $widgets['txtFatherName']->setAttribute('value', $this->employee->fatherName);
-        $widgets['txtMotherName']->setAttribute('value', $this->employee->motherName);
+      #  $widgets['txtFatherName']->setAttribute('value', $this->employee->fatherName);
+      #  $widgets['txtMotherName']->setAttribute('value', $this->employee->motherName);
         $widgets['txtNTN']->setAttribute('value', $this->employee->ntn);
 
         //setting the default selected nation code
@@ -183,8 +183,10 @@ class EmployeePersonalDetailsForm extends BaseForm {
         //setting server side validators
         $validators = array(
             'txtEmployeeId' => new sfValidatorString(array('required' => false)),
-            'txtEmpFirstName' => new sfValidatorString(array('required' => true, 'max_length' => 30, 'trim' => true),
-                    array('required' => 'First Name Empty!', 'max_length' => 'First Name Length exceeded 30 characters')),
+            'txtEmpFirstName' => new sfValidatorString(
+                ['required' => true, 'max_length' => 30, 'trim' => true],
+                ['required' => 'First Name Empty!', 'max_length' => 'First Name Length exceeded 30 characters']
+            ),
             'txtEmpMiddleName' => new sfValidatorString(array('required' => false, 'max_length' => 30, 'trim' => true), array('max_length' => 'Middle Name Length exceeded 30 characters')),
             'txtEmpLastName' => new sfValidatorString(array('required' => true, 'max_length' => 30, 'trim' => true),
                     array('required' => 'Last Name Empty!', 'max_length' => 'Last Name Length exceeded 30 characters')),
@@ -198,8 +200,8 @@ class EmployeePersonalDetailsForm extends BaseForm {
             'chkSmokeFlag' => new sfValidatorString(array('required' => false)),
             'txtLicExpDate' => new ohrmDateValidator(array('date_format' => $inputDatePattern, 'required' => false), array('invalid' => "Date format should be $inputDatePattern")),
             'txtMilitarySer' => new sfValidatorString(array('required' => false)),
-            'txtFatherName' => new sfValidatorString(array('required' => false)),
-            'txtMotherName' => new sfValidatorString(array('required' => false)),
+            /*'txtFatherName' => new sfValidatorString(array('required' => false)),
+            'txtMotherName' => new sfValidatorString(array('required' => false)),*/
             'txtNTN' => new sfValidatorString(array('required' => false)),
 
         );
@@ -208,13 +210,13 @@ class EmployeePersonalDetailsForm extends BaseForm {
     }
 
     private function getSensitiveInfoWidgets() {
-
-        $widgets = array('txtEmployeeId' => new sfWidgetFormInputText(),
+        $widgets = [
+            'txtEmployeeId' => new sfWidgetFormInputText(),
             'txtNICNo' => new sfWidgetFormInputText(),
             'txtSINNo' => new sfWidgetFormInputText(),
             'DOB' => new ohrmWidgetDatePicker(array(), array('id' => 'personal_DOB')),
-            'txtLicenNo' => new sfWidgetFormInputText());
-
+            'txtLicenNo' => new sfWidgetFormInputText()
+        ];
 
         $widgets['txtEmployeeId']->setAttribute('value', $this->employee->employeeId);
         $widgets['txtNICNo']->setAttribute('value', $this->employee->ssn);
@@ -244,20 +246,16 @@ class EmployeePersonalDetailsForm extends BaseForm {
         $employee = $this->employee;
 
         if ($this->personalInformationPermission->canUpdate()) {
-
             $employee->firstName = $this->getValue('txtEmpFirstName');
             $employee->middleName = $this->getValue('txtEmpMiddleName');
             $employee->lastName = $this->getValue('txtEmpLastName');
             $employee->nickName = $this->getValue('txtEmpNickName');
-            $employee->fatherName = $this->getValue('txtFatherName');
-            $employee->motherName = $this->getValue('txtMotherName');
+            /*$employee->fatherName = $this->getValue('txtFatherName');
+            $employee->motherName = $this->getValue('txtMotherName');*/
             $employee->ntn = $this->getValue('txtNTN');
-
             $nation = $this->getValue('cmbNation');
             $employee->nation_code = ($nation != '0') ? $nation : null;
             $employee->otherId = $this->getValue('txtOtherID');
-
-
             $employee->emp_marital_status = $this->getValue('cmbMarital');
             $smoker = $this->getValue('chkSmokeFlag');
             $employee->smoker = !empty($smoker) ? $smoker : 0;
@@ -268,7 +266,6 @@ class EmployeePersonalDetailsForm extends BaseForm {
             }
 
             $employee->emp_dri_lice_exp_date = $this->getValue('txtLicExpDate');
-
             $employee->militaryService = $this->getValue('txtMilitarySer');
         }
 
@@ -279,9 +276,7 @@ class EmployeePersonalDetailsForm extends BaseForm {
             $employee->emp_birthday = $this->getValue('DOB');
             $employee->licenseNo = $this->getValue('txtLicenNo');
         }
-
         return $employee;
     }
-
 }
 

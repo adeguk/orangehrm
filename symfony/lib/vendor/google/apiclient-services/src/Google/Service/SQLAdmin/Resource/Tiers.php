@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -26,8 +26,8 @@
 class Google_Service_SQLAdmin_Resource_Tiers extends Google_Service_Resource
 {
   /**
-   * Lists all available service tiers for Google Cloud SQL, for example D1, D2.
-   * For related information, see Pricing. (tiers.listTiers)
+   * Lists all available machine types (tiers) for Cloud SQL, for example,
+   * db-n1-standard-1. For related information, see Pricing. (tiers.listTiers)
    *
    * @param string $project Project ID of the project for which to list tiers.
    * @param array $optParams Optional parameters.

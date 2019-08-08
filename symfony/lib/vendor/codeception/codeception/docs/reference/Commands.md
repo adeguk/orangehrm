@@ -27,7 +27,7 @@ Create new test suite. Requires suite name and actor name
 ## GherkinSnippets
 
 Generates code snippets for matched feature files in a suite.
-Code snuppets are expected to be implemtned in Actor or PageOjects
+Code snippets are expected to be implemented in Actor or PageObjects
 
 Usage:
 
@@ -39,6 +39,18 @@ Usage:
 
 
 ## Init
+
+
+
+## GenerateSnapshot
+
+Generates Snapshot.
+Snapshot can be used to test dynamical data.
+If suite name is provided, an actor class will be included into placeholder
+
+* `codecept g:snapshot UserEmails`
+* `codecept g:snapshot Products`
+* `codecept g:snapshot acceptance UserEmails`
 
 
 
@@ -155,12 +167,14 @@ Options:
  --coverage-html       Generate CodeCoverage HTML report in path (default: "coverage")
  --coverage-xml        Generate CodeCoverage XML report in file (default: "coverage.xml")
  --coverage-text       Generate CodeCoverage text report in file (default: "coverage.txt")
+ --coverage-phpunit    Generate CodeCoverage PHPUnit report in file (default: "coverage-phpunit")
  --no-exit             Don't finish with exit code
  --group (-g)          Groups of tests to be executed (multiple values allowed)
  --skip (-s)           Skip selected suites (multiple values allowed)
  --skip-group (-x)     Skip selected groups (multiple values allowed)
  --env                 Run tests in selected environments. (multiple values allowed, environments can be merged with ',')
  --fail-fast (-f)      Stop after first failure
+ --no-rebuild          Do not rebuild actor classes on start
  --help (-h)           Display this help message.
  --quiet (-q)          Do not output any message.
  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
@@ -168,6 +182,7 @@ Options:
  --ansi                Force ANSI output.
  --no-ansi             Disable ANSI output.
  --no-interaction (-n) Do not ask any interactive question.
+ --seed                Use the given seed for shuffling tests
 ```
 
 
@@ -180,6 +195,10 @@ Auto-updates phar archive from official site: 'http://codeception.com/codecept.p
 * `php codecept.phar self-update`
 
 @author Franck Cassedanne <franck@cassedanne.com>
+
+
+
+## CompletionFallback
 
 
 
@@ -235,7 +254,7 @@ Generates empty environment configuration file into envs dir:
 
  * `codecept g:env firefox`
 
-Required to have `envs` path to be specifed in `codeception.yml`
+Required to have `envs` path to be specified in `codeception.yml`
 
 
 
@@ -264,18 +283,17 @@ Generates user-friendly text scenarios from scenario-driven tests (Cest, Cept).
 
 Generates StepObject class. You will be asked for steps you want to implement.
 
-* `codecept g:step acceptance AdminSteps`
-* `codecept g:step acceptance UserSteps --silent` - skip action questions
+* `codecept g:stepobject acceptance AdminSteps`
+* `codecept g:stepobject acceptance UserSteps --silent` - skip action questions
 
 
 
 
 ## Clean
 
-Cleans `output` directory
+Recursively cleans `output` directory and generated code.
 
 * `codecept clean`
-* `codecept clean -c path/to/project`
 
 
 
@@ -289,9 +307,6 @@ codecept gherkin:steps acceptance
 ```
 
 
-
-
-## Completion
 
 
 

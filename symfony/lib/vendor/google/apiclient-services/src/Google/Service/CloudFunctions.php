@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,11 +16,10 @@
  */
 
 /**
- * Service definition for CloudFunctions (v1beta2).
+ * Service definition for CloudFunctions (v1).
  *
  * <p>
- * API for managing lightweight user-provided functions executed in response to
- * events.</p>
+ * Manages lightweight user-provided functions executed in response to events.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -49,7 +48,8 @@ class Google_Service_CloudFunctions extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://cloudfunctions.googleapis.com/';
     $this->servicePath = '';
-    $this->version = 'v1beta2';
+    $this->batchPath = 'batch';
+    $this->version = 'v1';
     $this->serviceName = 'cloudfunctions';
 
     $this->operations = new Google_Service_CloudFunctions_Resource_Operations(
@@ -59,7 +59,7 @@ class Google_Service_CloudFunctions extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'v1beta2/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -69,13 +69,9 @@ class Google_Service_CloudFunctions extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta2/operations',
+              'path' => 'v1/operations',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'name' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -87,6 +83,10 @@ class Google_Service_CloudFunctions extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -100,7 +100,7 @@ class Google_Service_CloudFunctions extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1beta2/{+name}/locations',
+              'path' => 'v1/{+name}/locations',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -132,7 +132,7 @@ class Google_Service_CloudFunctions extends Google_Service
         array(
           'methods' => array(
             'call' => array(
-              'path' => 'v1beta2/{+name}:call',
+              'path' => 'v1/{+name}:call',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'name' => array(
@@ -142,7 +142,7 @@ class Google_Service_CloudFunctions extends Google_Service
                 ),
               ),
             ),'create' => array(
-              'path' => 'v1beta2/{+location}/functions',
+              'path' => 'v1/{+location}/functions',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'location' => array(
@@ -152,7 +152,7 @@ class Google_Service_CloudFunctions extends Google_Service
                 ),
               ),
             ),'delete' => array(
-              'path' => 'v1beta2/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
                 'name' => array(
@@ -161,8 +161,28 @@ class Google_Service_CloudFunctions extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'generateDownloadUrl' => array(
+              'path' => 'v1/{+name}:generateDownloadUrl',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'generateUploadUrl' => array(
+              'path' => 'v1/{+parent}/functions:generateUploadUrl',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'get' => array(
-              'path' => 'v1beta2/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -171,11 +191,21 @@ class Google_Service_CloudFunctions extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'list' => array(
-              'path' => 'v1beta2/{+location}/functions',
+            ),'getIamPolicy' => array(
+              'path' => 'v1/{+resource}:getIamPolicy',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'location' => array(
+                'resource' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'v1/{+parent}/functions',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -189,11 +219,35 @@ class Google_Service_CloudFunctions extends Google_Service
                   'type' => 'integer',
                 ),
               ),
-            ),'update' => array(
-              'path' => 'v1beta2/{+name}',
-              'httpMethod' => 'PUT',
+            ),'patch' => array(
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'setIamPolicy' => array(
+              'path' => 'v1/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'resource' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'testIamPermissions' => array(
+              'path' => 'v1/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'resource' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

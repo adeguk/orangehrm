@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,18 +17,9 @@
 
 class Google_Service_ShoppingContent_ProductStatusDestinationStatus extends Google_Model
 {
-  public $approvalStatus;
   public $destination;
-  public $intention;
+  public $status;
 
-  public function setApprovalStatus($approvalStatus)
-  {
-    $this->approvalStatus = $approvalStatus;
-  }
-  public function getApprovalStatus()
-  {
-    return $this->approvalStatus;
-  }
   public function setDestination($destination)
   {
     $this->destination = $destination;
@@ -37,12 +28,12 @@ class Google_Service_ShoppingContent_ProductStatusDestinationStatus extends Goog
   {
     return $this->destination;
   }
-  public function setIntention($intention)
+  public function setStatus($status)
   {
-    $this->intention = $intention;
+    $this->status = $status;
   }
-  public function getIntention()
+  public function getStatus()
   {
-    return $this->intention;
+    return $this->status;
   }
 }

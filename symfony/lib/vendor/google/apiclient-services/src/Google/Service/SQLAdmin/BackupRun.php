@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,6 +25,7 @@ class Google_Service_SQLAdmin_BackupRun extends Google_Model
   public $id;
   public $instance;
   public $kind;
+  public $location;
   public $selfLink;
   public $startTime;
   public $status;
@@ -55,10 +56,16 @@ class Google_Service_SQLAdmin_BackupRun extends Google_Model
   {
     return $this->enqueuedTime;
   }
+  /**
+   * @param Google_Service_SQLAdmin_OperationError
+   */
   public function setError(Google_Service_SQLAdmin_OperationError $error)
   {
     $this->error = $error;
   }
+  /**
+   * @return Google_Service_SQLAdmin_OperationError
+   */
   public function getError()
   {
     return $this->error;
@@ -86,6 +93,14 @@ class Google_Service_SQLAdmin_BackupRun extends Google_Model
   public function getKind()
   {
     return $this->kind;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  public function getLocation()
+  {
+    return $this->location;
   }
   public function setSelfLink($selfLink)
   {

@@ -4,11 +4,12 @@ use_stylesheet("http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min
 use_stylesheet("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css");
 use_javascript("http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js");
 use_javascript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js");
-;
+
 define( "DB_HOST", "localhost" );
-define( "DB_NAME", "orangehrm" );
+define( "DB_NAME", "career.loggcity" );
 define( "DB_USERNAME", "root" );
-define( "DB_PASSWORD", "" );
+define( "DB_PASSWORD", "thir3a6-i" );
+
 
 function connect()
 {

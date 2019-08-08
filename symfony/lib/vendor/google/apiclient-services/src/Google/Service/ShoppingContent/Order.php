@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,7 +19,8 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
 {
   protected $collection_key = 'shipments';
   public $acknowledged;
-  public $channelType;
+  protected $billingAddressType = 'Google_Service_ShoppingContent_OrderAddress';
+  protected $billingAddressDataType = '';
   protected $customerType = 'Google_Service_ShoppingContent_OrderCustomer';
   protected $customerDataType = '';
   protected $deliveryDetailsType = 'Google_Service_ShoppingContent_OrderDeliveryDetails';
@@ -30,10 +31,10 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   protected $lineItemsDataType = 'array';
   public $merchantId;
   public $merchantOrderId;
-  protected $netAmountType = 'Google_Service_ShoppingContent_Price';
-  protected $netAmountDataType = '';
-  protected $paymentMethodType = 'Google_Service_ShoppingContent_OrderPaymentMethod';
-  protected $paymentMethodDataType = '';
+  protected $netPriceAmountType = 'Google_Service_ShoppingContent_Price';
+  protected $netPriceAmountDataType = '';
+  protected $netTaxAmountType = 'Google_Service_ShoppingContent_Price';
+  protected $netTaxAmountDataType = '';
   public $paymentStatus;
   public $placedDate;
   protected $promotionsType = 'Google_Service_ShoppingContent_OrderPromotion';
@@ -46,8 +47,8 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   protected $shippingCostDataType = '';
   protected $shippingCostTaxType = 'Google_Service_ShoppingContent_Price';
   protected $shippingCostTaxDataType = '';
-  public $shippingOption;
   public $status;
+  public $taxCollector;
 
   public function setAcknowledged($acknowledged)
   {
@@ -57,26 +58,44 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   {
     return $this->acknowledged;
   }
-  public function setChannelType($channelType)
+  /**
+   * @param Google_Service_ShoppingContent_OrderAddress
+   */
+  public function setBillingAddress(Google_Service_ShoppingContent_OrderAddress $billingAddress)
   {
-    $this->channelType = $channelType;
+    $this->billingAddress = $billingAddress;
   }
-  public function getChannelType()
+  /**
+   * @return Google_Service_ShoppingContent_OrderAddress
+   */
+  public function getBillingAddress()
   {
-    return $this->channelType;
+    return $this->billingAddress;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderCustomer
+   */
   public function setCustomer(Google_Service_ShoppingContent_OrderCustomer $customer)
   {
     $this->customer = $customer;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderCustomer
+   */
   public function getCustomer()
   {
     return $this->customer;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderDeliveryDetails
+   */
   public function setDeliveryDetails(Google_Service_ShoppingContent_OrderDeliveryDetails $deliveryDetails)
   {
     $this->deliveryDetails = $deliveryDetails;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderDeliveryDetails
+   */
   public function getDeliveryDetails()
   {
     return $this->deliveryDetails;
@@ -97,10 +116,16 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   {
     return $this->kind;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderLineItem
+   */
   public function setLineItems($lineItems)
   {
     $this->lineItems = $lineItems;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderLineItem
+   */
   public function getLineItems()
   {
     return $this->lineItems;
@@ -121,21 +146,33 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   {
     return $this->merchantOrderId;
   }
-  public function setNetAmount(Google_Service_ShoppingContent_Price $netAmount)
+  /**
+   * @param Google_Service_ShoppingContent_Price
+   */
+  public function setNetPriceAmount(Google_Service_ShoppingContent_Price $netPriceAmount)
   {
-    $this->netAmount = $netAmount;
+    $this->netPriceAmount = $netPriceAmount;
   }
-  public function getNetAmount()
+  /**
+   * @return Google_Service_ShoppingContent_Price
+   */
+  public function getNetPriceAmount()
   {
-    return $this->netAmount;
+    return $this->netPriceAmount;
   }
-  public function setPaymentMethod(Google_Service_ShoppingContent_OrderPaymentMethod $paymentMethod)
+  /**
+   * @param Google_Service_ShoppingContent_Price
+   */
+  public function setNetTaxAmount(Google_Service_ShoppingContent_Price $netTaxAmount)
   {
-    $this->paymentMethod = $paymentMethod;
+    $this->netTaxAmount = $netTaxAmount;
   }
-  public function getPaymentMethod()
+  /**
+   * @return Google_Service_ShoppingContent_Price
+   */
+  public function getNetTaxAmount()
   {
-    return $this->paymentMethod;
+    return $this->netTaxAmount;
   }
   public function setPaymentStatus($paymentStatus)
   {
@@ -153,53 +190,75 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   {
     return $this->placedDate;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderPromotion
+   */
   public function setPromotions($promotions)
   {
     $this->promotions = $promotions;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderPromotion
+   */
   public function getPromotions()
   {
     return $this->promotions;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderRefund
+   */
   public function setRefunds($refunds)
   {
     $this->refunds = $refunds;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderRefund
+   */
   public function getRefunds()
   {
     return $this->refunds;
   }
+  /**
+   * @param Google_Service_ShoppingContent_OrderShipment
+   */
   public function setShipments($shipments)
   {
     $this->shipments = $shipments;
   }
+  /**
+   * @return Google_Service_ShoppingContent_OrderShipment
+   */
   public function getShipments()
   {
     return $this->shipments;
   }
+  /**
+   * @param Google_Service_ShoppingContent_Price
+   */
   public function setShippingCost(Google_Service_ShoppingContent_Price $shippingCost)
   {
     $this->shippingCost = $shippingCost;
   }
+  /**
+   * @return Google_Service_ShoppingContent_Price
+   */
   public function getShippingCost()
   {
     return $this->shippingCost;
   }
+  /**
+   * @param Google_Service_ShoppingContent_Price
+   */
   public function setShippingCostTax(Google_Service_ShoppingContent_Price $shippingCostTax)
   {
     $this->shippingCostTax = $shippingCostTax;
   }
+  /**
+   * @return Google_Service_ShoppingContent_Price
+   */
   public function getShippingCostTax()
   {
     return $this->shippingCostTax;
-  }
-  public function setShippingOption($shippingOption)
-  {
-    $this->shippingOption = $shippingOption;
-  }
-  public function getShippingOption()
-  {
-    return $this->shippingOption;
   }
   public function setStatus($status)
   {
@@ -208,5 +267,13 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   public function getStatus()
   {
     return $this->status;
+  }
+  public function setTaxCollector($taxCollector)
+  {
+    $this->taxCollector = $taxCollector;
+  }
+  public function getTaxCollector()
+  {
+    return $this->taxCollector;
   }
 }

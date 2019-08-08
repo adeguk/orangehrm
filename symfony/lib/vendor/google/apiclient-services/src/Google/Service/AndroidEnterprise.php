@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -42,12 +42,14 @@ class Google_Service_AndroidEnterprise extends Google_Service
   public $installs;
   public $managedconfigurationsfordevice;
   public $managedconfigurationsforuser;
+  public $managedconfigurationssettings;
   public $permissions;
   public $products;
   public $serviceaccountkeys;
   public $storelayoutclusters;
   public $storelayoutpages;
   public $users;
+  public $webapps;
   
   /**
    * Constructs the internal representation of the AndroidEnterprise service.
@@ -59,6 +61,7 @@ class Google_Service_AndroidEnterprise extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
     $this->servicePath = 'androidenterprise/v1/';
+    $this->batchPath = 'batch/androidenterprise/v1';
     $this->version = 'v1';
     $this->serviceName = 'androidenterprise';
 
@@ -123,6 +126,30 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'patch' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'deviceId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),'setState' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state',
               'httpMethod' => 'PUT',
@@ -141,6 +168,30 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'deviceId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -178,16 +229,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
             ),'createWebToken' => array(
               'path' => 'enterprises/{enterpriseId}/createWebToken',
               'httpMethod' => 'POST',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'delete' => array(
-              'path' => 'enterprises/{enterpriseId}',
-              'httpMethod' => 'DELETE',
               'parameters' => array(
                 'enterpriseId' => array(
                   'location' => 'path',
@@ -244,16 +285,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
               'parameters' => array(
                 'enterpriseId' => array(
                   'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'insert' => array(
-              'path' => 'enterprises',
-              'httpMethod' => 'POST',
-              'parameters' => array(
-                'token' => array(
-                  'location' => 'query',
                   'type' => 'string',
                   'required' => true,
                 ),
@@ -859,6 +890,31 @@ class Google_Service_AndroidEnterprise extends Google_Service
           )
         )
     );
+    $this->managedconfigurationssettings = new Google_Service_AndroidEnterprise_Resource_Managedconfigurationssettings(
+        $this,
+        $this->serviceName,
+        'managedconfigurationssettings',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'productId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
     $this->permissions = new Google_Service_AndroidEnterprise_Resource_Permissions(
         $this,
         $this->serviceName,
@@ -1401,6 +1457,21 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'revokeDeviceAccess' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}/deviceAccess',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'revokeToken' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/token',
               'httpMethod' => 'DELETE',
@@ -1441,6 +1512,96 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
                 'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->webapps = new Google_Service_AndroidEnterprise_Resource_Webapps(
+        $this,
+        $this->serviceName,
+        'webapps',
+        array(
+          'methods' => array(
+            'delete' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps/{webAppId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'webAppId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps/{webAppId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'webAppId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'patch' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps/{webAppId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'webAppId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'enterprises/{enterpriseId}/webApps/{webAppId}',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'webAppId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

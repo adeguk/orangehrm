@@ -1,25 +1,16 @@
 <?php 
 use_stylesheet(plugin_web_path('orangehrmPimPlugin', 'css/viewPersonalDetailsSuccess.css'));
 ?>
-
 <div class="box pimPane" id="employee-details">
-    
     <?php echo include_component('pim', 'pimLeftMenu', array('empNumber'=>$empNumber, 'form' => $form));?>
-    
     <div class="personalDetails" id="pdMainContainer">
-        
         <div class="head">
             <h1><?php echo __('Personal Details'); ?></h1>
         </div> <!-- head -->
-    
         <div class="inner">
-
             <?php if ($personalInformationPermission->canRead()) : ?>
-
             <?php include_partial('global/flash_messages', array('prefix' => 'personaldetails')); ?>
-
             <form id="frmEmpPersonalDetails" method="post" action="<?php echo url_for('pim/viewPersonalDetails'); ?>">
-
                 <?php echo $form['_csrf_token']; ?>
                 <?php echo $form['txtEmpID']->render(); ?>
 
@@ -121,25 +112,21 @@ use_stylesheet(plugin_web_path('orangehrmPimPlugin', 'css/viewPersonalDetailsSuc
                             <em>*</em> <?php echo __(CommonMessages::REQUIRED_FIELD); ?>
                         </li>                    
                     </ol>
-                    <?php endif; ?>                        
-
-
-<ol>
-    <li>
-        <label for="personal_txtFatherName"><?php echo __("Father's Name"); ?></label>
-        <?php echo $form['txtFatherName']->render(array("maxlength" => 30, "class" => "editable")); ?>
-    </li>
-    <li>
-        <label for="personal_txtMotherName"><?php echo __("Mother's Name"); ?></label>
-        <?php echo $form['txtMotherName']->render(array("maxlength" => 30, "class" => "editable")); ?>
-    </li>
-    <li>
-        <label for="personal_txtNTN"><?php echo __('NTN'); ?></label>
-        <?php echo $form['txtNTN']->render(array("maxlength" => 15, "class" => "editable")); ?>
-    </li>
-
-
-</ol>
+                    <?php endif; ?>
+                    <ol>
+                        <!--li>
+                            <label for="personal_txtFatherName">< ?= __("Father's Name"); ?></label>
+                            < ?= $form['txtFatherName']->render(array("maxlength" => 30, "class" => "editable")); ?>
+                        </li-->
+                        <!--li>
+                            <label for="personal_txtMotherName">< ?= __("Mother's Name"); ?></label>
+                            < ?= $form['txtMotherName']->render(array("maxlength" => 30, "class" => "editable")); ?>
+                        </li-->
+                        <li>
+                            <label for="personal_txtNTN"><?php echo __('NTN'); ?></label>
+                            <?php echo $form['txtNTN']->render(array("maxlength" => 15, "class" => "editable")); ?>
+                        </li>
+                    </ol>
                     <?php  if ($personalInformationPermission->canUpdate()) : ?>
                         <p><input type="button" id="btnSave" value="<?php echo __("Edit"); ?>" /></p>
                     <?php endif; ?>
@@ -151,10 +138,8 @@ use_stylesheet(plugin_web_path('orangehrmPimPlugin', 'css/viewPersonalDetailsSuc
             <?php endif; ?>
 
         </div> <!-- inner -->
-        
     </div> <!-- pdMainContainer -->
 
-    
     <?php echo include_component('pim', 'customFields', array('empNumber'=>$empNumber, 'screen' => CustomField::SCREEN_PERSONAL_DETAILS));?>
     <?php echo include_component('pim', 'attachments', array('empNumber'=>$empNumber, 'screen' => EmployeeAttachment::SCREEN_PERSONAL_DETAILS));?>
     
@@ -174,11 +159,8 @@ use_stylesheet(plugin_web_path('orangehrmPimPlugin', 'css/viewPersonalDetailsSuc
     var lang_processing = '<?php echo __js(CommonMessages::LABEL_PROCESSING);?>';
     var lang_invalidDate = '<?php echo __js(ValidationMessages::DATE_FORMAT_INVALID, array('%format%' => str_replace('yy', 'yyyy', get_datepicker_date_format($sf_user->getDateFormat())))) ?>';
     var datepickerDateFormat = '<?php echo get_datepicker_date_format($sf_user->getDateFormat()); ?>';
-
     var fileModified = 0;
-    
     var readOnlyFields = <?php echo json_encode($form->getReadOnlyWidgetNames());?>
-    
  
     //]]>
 </script>

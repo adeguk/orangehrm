@@ -19,10 +19,10 @@ abstract class BaseEmployeeForm extends BaseFormDoctrine
       'lastName'              => new sfWidgetFormInputText(),
       'firstName'             => new sfWidgetFormInputText(),
       'middleName'            => new sfWidgetFormInputText(),
-        'nickName'            => new sfWidgetFormInputText(),
-        'fatherName'          => new sfWidgetFormInputText(),
-        'motherName'          => new sfWidgetFormInputText(),
-        'ntn'                 => new sfWidgetFormInputText(),
+      'nickName'              => new sfWidgetFormInputText(),
+      /*'fatherName'            => new sfWidgetFormInputText(),*/
+      /*'motherName'            => new sfWidgetFormInputText(),*/
+      'ntn'                   => new sfWidgetFormInputText(),
       'smoker'                => new sfWidgetFormInputText(),
       'ssn'                   => new sfWidgetFormInputText(),
       'sin'                   => new sfWidgetFormInputText(),
@@ -76,9 +76,9 @@ abstract class BaseEmployeeForm extends BaseFormDoctrine
       'firstName'             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'middleName'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'nickName'              => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-        'fatherName'              => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-        'motherName'              => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-        'ntn'              =>  new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      /*'fatherName'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),*/
+      /*'motherName'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),*/
+      'ntn'                   =>  new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'smoker'                => new sfValidatorInteger(array('required' => false)),
       'ssn'                   => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'sin'                   => new sfValidatorString(array('max_length' => 100, 'required' => false)),

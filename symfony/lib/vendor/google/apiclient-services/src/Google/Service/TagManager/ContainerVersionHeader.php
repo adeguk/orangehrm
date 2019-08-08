@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -22,11 +22,14 @@ class Google_Service_TagManager_ContainerVersionHeader extends Google_Model
   public $containerVersionId;
   public $deleted;
   public $name;
+  public $numCustomTemplates;
   public $numMacros;
   public $numRules;
   public $numTags;
   public $numTriggers;
   public $numVariables;
+  public $numZones;
+  public $path;
 
   public function setAccountId($accountId)
   {
@@ -68,6 +71,14 @@ class Google_Service_TagManager_ContainerVersionHeader extends Google_Model
   {
     return $this->name;
   }
+  public function setNumCustomTemplates($numCustomTemplates)
+  {
+    $this->numCustomTemplates = $numCustomTemplates;
+  }
+  public function getNumCustomTemplates()
+  {
+    return $this->numCustomTemplates;
+  }
   public function setNumMacros($numMacros)
   {
     $this->numMacros = $numMacros;
@@ -107,5 +118,21 @@ class Google_Service_TagManager_ContainerVersionHeader extends Google_Model
   public function getNumVariables()
   {
     return $this->numVariables;
+  }
+  public function setNumZones($numZones)
+  {
+    $this->numZones = $numZones;
+  }
+  public function getNumZones()
+  {
+    return $this->numZones;
+  }
+  public function setPath($path)
+  {
+    $this->path = $path;
+  }
+  public function getPath()
+  {
+    return $this->path;
   }
 }

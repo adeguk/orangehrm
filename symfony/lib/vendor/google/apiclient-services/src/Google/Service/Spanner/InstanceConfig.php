@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,10 +15,13 @@
  * the License.
  */
 
-class Google_Service_Spanner_InstanceConfig extends Google_Model
+class Google_Service_Spanner_InstanceConfig extends Google_Collection
 {
+  protected $collection_key = 'replicas';
   public $displayName;
   public $name;
+  protected $replicasType = 'Google_Service_Spanner_ReplicaInfo';
+  protected $replicasDataType = 'array';
 
   public function setDisplayName($displayName)
   {
@@ -35,5 +38,19 @@ class Google_Service_Spanner_InstanceConfig extends Google_Model
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_Spanner_ReplicaInfo
+   */
+  public function setReplicas($replicas)
+  {
+    $this->replicas = $replicas;
+  }
+  /**
+   * @return Google_Service_Spanner_ReplicaInfo
+   */
+  public function getReplicas()
+  {
+    return $this->replicas;
   }
 }

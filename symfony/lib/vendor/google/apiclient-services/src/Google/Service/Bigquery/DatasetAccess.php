@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,7 @@ class Google_Service_Bigquery_DatasetAccess extends Google_Model
 {
   public $domain;
   public $groupByEmail;
+  public $iamMember;
   public $role;
   public $specialGroup;
   public $userByEmail;
@@ -40,6 +41,14 @@ class Google_Service_Bigquery_DatasetAccess extends Google_Model
   public function getGroupByEmail()
   {
     return $this->groupByEmail;
+  }
+  public function setIamMember($iamMember)
+  {
+    $this->iamMember = $iamMember;
+  }
+  public function getIamMember()
+  {
+    return $this->iamMember;
   }
   public function setRole($role)
   {
@@ -65,10 +74,16 @@ class Google_Service_Bigquery_DatasetAccess extends Google_Model
   {
     return $this->userByEmail;
   }
+  /**
+   * @param Google_Service_Bigquery_TableReference
+   */
   public function setView(Google_Service_Bigquery_TableReference $view)
   {
     $this->view = $view;
   }
+  /**
+   * @return Google_Service_Bigquery_TableReference
+   */
   public function getView()
   {
     return $this->view;

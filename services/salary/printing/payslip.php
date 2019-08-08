@@ -2,9 +2,10 @@
 require('fpdf17/fpdf.php');
 
 define( "DB_HOST", "localhost" );
-define( "DB_NAME", "orangehrm" );
+define( "DB_NAME", "career.loggcity" );
 define( "DB_USERNAME", "root" );
-define( "DB_PASSWORD", "" );
+define( "DB_PASSWORD", "thir3a6-i" );
+
 
 setlocale(LC_MONETARY,"en_US");
 

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,10 +15,15 @@
  * the License.
  */
 
-class Google_Service_ServiceControl_AuthenticationInfo extends Google_Model
+class Google_Service_ServiceControl_AuthenticationInfo extends Google_Collection
 {
+  protected $collection_key = 'serviceAccountDelegationInfo';
   public $authoritySelector;
   public $principalEmail;
+  protected $serviceAccountDelegationInfoType = 'Google_Service_ServiceControl_ServiceAccountDelegationInfo';
+  protected $serviceAccountDelegationInfoDataType = 'array';
+  public $serviceAccountKeyName;
+  public $thirdPartyPrincipal;
 
   public function setAuthoritySelector($authoritySelector)
   {
@@ -35,5 +40,35 @@ class Google_Service_ServiceControl_AuthenticationInfo extends Google_Model
   public function getPrincipalEmail()
   {
     return $this->principalEmail;
+  }
+  /**
+   * @param Google_Service_ServiceControl_ServiceAccountDelegationInfo
+   */
+  public function setServiceAccountDelegationInfo($serviceAccountDelegationInfo)
+  {
+    $this->serviceAccountDelegationInfo = $serviceAccountDelegationInfo;
+  }
+  /**
+   * @return Google_Service_ServiceControl_ServiceAccountDelegationInfo
+   */
+  public function getServiceAccountDelegationInfo()
+  {
+    return $this->serviceAccountDelegationInfo;
+  }
+  public function setServiceAccountKeyName($serviceAccountKeyName)
+  {
+    $this->serviceAccountKeyName = $serviceAccountKeyName;
+  }
+  public function getServiceAccountKeyName()
+  {
+    return $this->serviceAccountKeyName;
+  }
+  public function setThirdPartyPrincipal($thirdPartyPrincipal)
+  {
+    $this->thirdPartyPrincipal = $thirdPartyPrincipal;
+  }
+  public function getThirdPartyPrincipal()
+  {
+    return $this->thirdPartyPrincipal;
   }
 }

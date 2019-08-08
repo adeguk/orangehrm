@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -37,5 +37,27 @@ class Google_Service_Vision_Resource_Images extends Google_Service_Resource
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('annotate', array($params), "Google_Service_Vision_BatchAnnotateImagesResponse");
+  }
+  /**
+   * Run asynchronous image detection and annotation for a list of images.
+   *
+   * Progress and results can be retrieved through the
+   * `google.longrunning.Operations` interface. `Operation.metadata` contains
+   * `OperationMetadata` (metadata). `Operation.response` contains
+   * `AsyncBatchAnnotateImagesResponse` (results).
+   *
+   * This service will write image annotation outputs to json files in customer
+   * GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+   * (images.asyncBatchAnnotate)
+   *
+   * @param Google_Service_Vision_AsyncBatchAnnotateImagesRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Vision_Operation
+   */
+  public function asyncBatchAnnotate(Google_Service_Vision_AsyncBatchAnnotateImagesRequest $postBody, $optParams = array())
+  {
+    $params = array('postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('asyncBatchAnnotate', array($params), "Google_Service_Vision_Operation");
   }
 }

@@ -17,8 +17,10 @@ class ClassCodeGeneratorSpec extends ObjectBehavior
         MethodNode $method2,
         MethodNode $method3,
         MethodNode $method4,
+        MethodNode $method5,
         ArgumentNode $argument11,
         ArgumentNode $argument12,
+        ArgumentNode $argument13,
         ArgumentNode $argument21,
         ArgumentNode $argument31
     ) {
@@ -27,13 +29,13 @@ class ClassCodeGeneratorSpec extends ObjectBehavior
             'Prophecy\Doubler\Generator\MirroredInterface', 'ArrayAccess', 'ArrayIterator'
         ));
         $class->getProperties()->willReturn(array('name' => 'public', 'email' => 'private'));
-        $class->getMethods()->willReturn(array($method1, $method2, $method3, $method4));
+        $class->getMethods()->willReturn(array($method1, $method2, $method3, $method4, $method5));
 
         $method1->getName()->willReturn('getName');
         $method1->getVisibility()->willReturn('public');
         $method1->returnsReference()->willReturn(false);
         $method1->isStatic()->willReturn(true);
-        $method1->getArguments()->willReturn(array($argument11, $argument12));
+        $method1->getArguments()->willReturn(array($argument11, $argument12, $argument13));
         $method1->hasReturnType()->willReturn(true);
         $method1->getReturnType()->willReturn('string');
         $method1->hasNullableReturnType()->willReturn(true);
@@ -68,6 +70,16 @@ class ClassCodeGeneratorSpec extends ObjectBehavior
         $method4->hasNullableReturnType()->willReturn(false);
         $method4->getCode()->willReturn('return;');
 
+        $method5->getName()->willReturn('returnObject');
+        $method5->getVisibility()->willReturn('public');
+        $method5->returnsReference()->willReturn(false);
+        $method5->isStatic()->willReturn(false);
+        $method5->getArguments()->willReturn(array());
+        $method5->hasReturnType()->willReturn(true);
+        $method5->getReturnType()->willReturn(version_compare(PHP_VERSION, '7.2', '>=') ? 'object' : '\object');
+        $method5->hasNullableReturnType()->willReturn(false);
+        $method5->getCode()->willReturn('return;');
+
         $argument11->getName()->willReturn('fullname');
         $argument11->getTypeHint()->willReturn('array');
         $argument11->isOptional()->willReturn(true);
@@ -82,6 +94,13 @@ class ClassCodeGeneratorSpec extends ObjectBehavior
         $argument12->isPassedByReference()->willReturn(false);
         $argument12->isVariadic()->willReturn(false);
         $argument12->isNullable()->willReturn(false);
+
+        $argument13->getName()->willReturn('instance');
+        $argument13->getTypeHint()->willReturn('object');
+        $argument13->isOptional()->willReturn(false);
+        $argument13->isPassedByReference()->willReturn(false);
+        $argument13->isVariadic()->willReturn(false);
+        $argument13->isNullable()->willReturn(false);
 
         $argument21->getName()->willReturn('default');
         $argument21->getTypeHint()->willReturn('string');
@@ -101,14 +120,14 @@ class ClassCodeGeneratorSpec extends ObjectBehavior
 
         $code = $this->generate('CustomClass', $class);
 
-        if (version_compare(PHP_VERSION, '7.1', '>=')) {
+        if (version_compare(PHP_VERSION, '7.2', '>=')) {
             $expected = <<<'PHP'
 namespace  {
 class CustomClass extends \RuntimeException implements \Prophecy\Doubler\Generator\MirroredInterface, \ArrayAccess, \ArrayIterator {
 public $name;
 private $email;
 
-public static function getName(array $fullname = NULL, \ReflectionClass $class): ?string {
+public static function getName(array $fullname = NULL, \ReflectionClass $class, object $instance): ?string {
 return $this->name;
 }
 protected  function getEmail(?string $default = 'ever.zet@gmail.com') {
@@ -118,6 +137,35 @@ public  function &getRefValue( $refValue): string {
 return $this->refValue;
 }
 public  function doSomething(): void {
+return;
+}
+public  function returnObject(): object {
+return;
+}
+
+}
+}
+PHP;
+        } elseif (version_compare(PHP_VERSION, '7.1', '>=')) {
+            $expected = <<<'PHP'
+namespace  {
+class CustomClass extends \RuntimeException implements \Prophecy\Doubler\Generator\MirroredInterface, \ArrayAccess, \ArrayIterator {
+public $name;
+private $email;
+
+public static function getName(array $fullname = NULL, \ReflectionClass $class, \object $instance): ?string {
+return $this->name;
+}
+protected  function getEmail(?string $default = 'ever.zet@gmail.com') {
+return $this->email;
+}
+public  function &getRefValue( $refValue): string {
+return $this->refValue;
+}
+public  function doSomething(): void {
+return;
+}
+public  function returnObject(): \object {
 return;
 }
 
@@ -131,7 +179,7 @@ class CustomClass extends \RuntimeException implements \Prophecy\Doubler\Generat
 public $name;
 private $email;
 
-public static function getName(array $fullname = NULL, \ReflectionClass $class): string {
+public static function getName(array $fullname = NULL, \ReflectionClass $class, \object $instance): string {
 return $this->name;
 }
 protected  function getEmail(string $default = 'ever.zet@gmail.com') {
@@ -141,6 +189,9 @@ public  function &getRefValue( $refValue): string {
 return $this->refValue;
 }
 public  function doSomething() {
+return;
+}
+public  function returnObject(): \object {
 return;
 }
 
@@ -154,7 +205,7 @@ class CustomClass extends \RuntimeException implements \Prophecy\Doubler\Generat
 public $name;
 private $email;
 
-public static function getName(array $fullname = NULL, \ReflectionClass $class) {
+public static function getName(array $fullname = NULL, \ReflectionClass $class, \object $instance) {
 return $this->name;
 }
 protected  function getEmail(\string $default = 'ever.zet@gmail.com') {
@@ -164,6 +215,9 @@ public  function &getRefValue( $refValue) {
 return $this->refValue;
 }
 public  function doSomething() {
+return;
+}
+public  function returnObject() {
 return;
 }
 

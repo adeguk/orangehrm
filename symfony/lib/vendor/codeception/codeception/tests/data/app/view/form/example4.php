@@ -32,7 +32,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" title="site" href="http://127.0.0.1:8100"><img src="http://127.0.0.1:8100/img/logo_new.png"></a>
+		      <a class="navbar-brand" title="site" href="http://127.0.0.1:8100"><img src="http://127.0.0.1:8100/img/logo.png"></a>
 		    </div>
 
 			<div class="collapse navbar-collapse" id="navbar-collapse-menu">

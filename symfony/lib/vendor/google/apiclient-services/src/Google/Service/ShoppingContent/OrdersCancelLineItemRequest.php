@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,22 +17,13 @@
 
 class Google_Service_ShoppingContent_OrdersCancelLineItemRequest extends Google_Model
 {
-  protected $amountType = 'Google_Service_ShoppingContent_Price';
-  protected $amountDataType = '';
   public $lineItemId;
   public $operationId;
+  public $productId;
   public $quantity;
   public $reason;
   public $reasonText;
 
-  public function setAmount(Google_Service_ShoppingContent_Price $amount)
-  {
-    $this->amount = $amount;
-  }
-  public function getAmount()
-  {
-    return $this->amount;
-  }
   public function setLineItemId($lineItemId)
   {
     $this->lineItemId = $lineItemId;
@@ -48,6 +39,14 @@ class Google_Service_ShoppingContent_OrdersCancelLineItemRequest extends Google_
   public function getOperationId()
   {
     return $this->operationId;
+  }
+  public function setProductId($productId)
+  {
+    $this->productId = $productId;
+  }
+  public function getProductId()
+  {
+    return $this->productId;
   }
   public function setQuantity($quantity)
   {

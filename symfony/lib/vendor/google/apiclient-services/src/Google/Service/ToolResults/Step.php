@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -30,6 +30,8 @@ class Google_Service_ToolResults_Step extends Google_Collection
   public $hasImages;
   protected $labelsType = 'Google_Service_ToolResults_StepLabelsEntry';
   protected $labelsDataType = 'array';
+  protected $multiStepType = 'Google_Service_ToolResults_MultiStep';
+  protected $multiStepDataType = '';
   public $name;
   protected $outcomeType = 'Google_Service_ToolResults_Outcome';
   protected $outcomeDataType = '';
@@ -42,18 +44,30 @@ class Google_Service_ToolResults_Step extends Google_Collection
   protected $toolExecutionStepType = 'Google_Service_ToolResults_ToolExecutionStep';
   protected $toolExecutionStepDataType = '';
 
+  /**
+   * @param Google_Service_ToolResults_Timestamp
+   */
   public function setCompletionTime(Google_Service_ToolResults_Timestamp $completionTime)
   {
     $this->completionTime = $completionTime;
   }
+  /**
+   * @return Google_Service_ToolResults_Timestamp
+   */
   public function getCompletionTime()
   {
     return $this->completionTime;
   }
+  /**
+   * @param Google_Service_ToolResults_Timestamp
+   */
   public function setCreationTime(Google_Service_ToolResults_Timestamp $creationTime)
   {
     $this->creationTime = $creationTime;
   }
+  /**
+   * @return Google_Service_ToolResults_Timestamp
+   */
   public function getCreationTime()
   {
     return $this->creationTime;
@@ -66,18 +80,30 @@ class Google_Service_ToolResults_Step extends Google_Collection
   {
     return $this->description;
   }
+  /**
+   * @param Google_Service_ToolResults_Duration
+   */
   public function setDeviceUsageDuration(Google_Service_ToolResults_Duration $deviceUsageDuration)
   {
     $this->deviceUsageDuration = $deviceUsageDuration;
   }
+  /**
+   * @return Google_Service_ToolResults_Duration
+   */
   public function getDeviceUsageDuration()
   {
     return $this->deviceUsageDuration;
   }
+  /**
+   * @param Google_Service_ToolResults_StepDimensionValueEntry
+   */
   public function setDimensionValue($dimensionValue)
   {
     $this->dimensionValue = $dimensionValue;
   }
+  /**
+   * @return Google_Service_ToolResults_StepDimensionValueEntry
+   */
   public function getDimensionValue()
   {
     return $this->dimensionValue;
@@ -90,13 +116,33 @@ class Google_Service_ToolResults_Step extends Google_Collection
   {
     return $this->hasImages;
   }
+  /**
+   * @param Google_Service_ToolResults_StepLabelsEntry
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return Google_Service_ToolResults_StepLabelsEntry
+   */
   public function getLabels()
   {
     return $this->labels;
+  }
+  /**
+   * @param Google_Service_ToolResults_MultiStep
+   */
+  public function setMultiStep(Google_Service_ToolResults_MultiStep $multiStep)
+  {
+    $this->multiStep = $multiStep;
+  }
+  /**
+   * @return Google_Service_ToolResults_MultiStep
+   */
+  public function getMultiStep()
+  {
+    return $this->multiStep;
   }
   public function setName($name)
   {
@@ -106,18 +152,30 @@ class Google_Service_ToolResults_Step extends Google_Collection
   {
     return $this->name;
   }
+  /**
+   * @param Google_Service_ToolResults_Outcome
+   */
   public function setOutcome(Google_Service_ToolResults_Outcome $outcome)
   {
     $this->outcome = $outcome;
   }
+  /**
+   * @return Google_Service_ToolResults_Outcome
+   */
   public function getOutcome()
   {
     return $this->outcome;
   }
+  /**
+   * @param Google_Service_ToolResults_Duration
+   */
   public function setRunDuration(Google_Service_ToolResults_Duration $runDuration)
   {
     $this->runDuration = $runDuration;
   }
+  /**
+   * @return Google_Service_ToolResults_Duration
+   */
   public function getRunDuration()
   {
     return $this->runDuration;
@@ -138,18 +196,30 @@ class Google_Service_ToolResults_Step extends Google_Collection
   {
     return $this->stepId;
   }
+  /**
+   * @param Google_Service_ToolResults_TestExecutionStep
+   */
   public function setTestExecutionStep(Google_Service_ToolResults_TestExecutionStep $testExecutionStep)
   {
     $this->testExecutionStep = $testExecutionStep;
   }
+  /**
+   * @return Google_Service_ToolResults_TestExecutionStep
+   */
   public function getTestExecutionStep()
   {
     return $this->testExecutionStep;
   }
+  /**
+   * @param Google_Service_ToolResults_ToolExecutionStep
+   */
   public function setToolExecutionStep(Google_Service_ToolResults_ToolExecutionStep $toolExecutionStep)
   {
     $this->toolExecutionStep = $toolExecutionStep;
   }
+  /**
+   * @return Google_Service_ToolResults_ToolExecutionStep
+   */
   public function getToolExecutionStep()
   {
     return $this->toolExecutionStep;

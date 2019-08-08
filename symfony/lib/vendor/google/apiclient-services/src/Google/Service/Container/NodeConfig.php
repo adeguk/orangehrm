@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,18 +17,38 @@
 
 class Google_Service_Container_NodeConfig extends Google_Collection
 {
-  protected $collection_key = 'tags';
+  protected $collection_key = 'taints';
+  protected $acceleratorsType = 'Google_Service_Container_AcceleratorConfig';
+  protected $acceleratorsDataType = 'array';
   public $diskSizeGb;
+  public $diskType;
   public $imageType;
   public $labels;
   public $localSsdCount;
   public $machineType;
   public $metadata;
+  public $minCpuPlatform;
   public $oauthScopes;
   public $preemptible;
   public $serviceAccount;
   public $tags;
+  protected $taintsType = 'Google_Service_Container_NodeTaint';
+  protected $taintsDataType = 'array';
 
+  /**
+   * @param Google_Service_Container_AcceleratorConfig
+   */
+  public function setAccelerators($accelerators)
+  {
+    $this->accelerators = $accelerators;
+  }
+  /**
+   * @return Google_Service_Container_AcceleratorConfig
+   */
+  public function getAccelerators()
+  {
+    return $this->accelerators;
+  }
   public function setDiskSizeGb($diskSizeGb)
   {
     $this->diskSizeGb = $diskSizeGb;
@@ -36,6 +56,14 @@ class Google_Service_Container_NodeConfig extends Google_Collection
   public function getDiskSizeGb()
   {
     return $this->diskSizeGb;
+  }
+  public function setDiskType($diskType)
+  {
+    $this->diskType = $diskType;
+  }
+  public function getDiskType()
+  {
+    return $this->diskType;
   }
   public function setImageType($imageType)
   {
@@ -77,6 +105,14 @@ class Google_Service_Container_NodeConfig extends Google_Collection
   {
     return $this->metadata;
   }
+  public function setMinCpuPlatform($minCpuPlatform)
+  {
+    $this->minCpuPlatform = $minCpuPlatform;
+  }
+  public function getMinCpuPlatform()
+  {
+    return $this->minCpuPlatform;
+  }
   public function setOauthScopes($oauthScopes)
   {
     $this->oauthScopes = $oauthScopes;
@@ -108,5 +144,19 @@ class Google_Service_Container_NodeConfig extends Google_Collection
   public function getTags()
   {
     return $this->tags;
+  }
+  /**
+   * @param Google_Service_Container_NodeTaint
+   */
+  public function setTaints($taints)
+  {
+    $this->taints = $taints;
+  }
+  /**
+   * @return Google_Service_Container_NodeTaint
+   */
+  public function getTaints()
+  {
+    return $this->taints;
   }
 }

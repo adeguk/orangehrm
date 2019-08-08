@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -54,7 +54,10 @@ class Google_Service_Dfareporting_Resource_Sizes extends Google_Service_Resource
     return $this->call('insert', array($params), "Google_Service_Dfareporting_Size");
   }
   /**
-   * Retrieves a list of sizes, possibly filtered. (sizes.listSizes)
+   * Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally
+   * unique and may include values not currently in use by your account. Due to
+   * this, the list of sizes returned by this method may differ from the list seen
+   * in the Trafficking UI. (sizes.listSizes)
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.

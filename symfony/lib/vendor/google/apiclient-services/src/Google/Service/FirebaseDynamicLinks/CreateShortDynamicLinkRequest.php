@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,13 +20,20 @@ class Google_Service_FirebaseDynamicLinks_CreateShortDynamicLinkRequest extends 
   protected $dynamicLinkInfoType = 'Google_Service_FirebaseDynamicLinks_DynamicLinkInfo';
   protected $dynamicLinkInfoDataType = '';
   public $longDynamicLink;
+  public $sdkVersion;
   protected $suffixType = 'Google_Service_FirebaseDynamicLinks_Suffix';
   protected $suffixDataType = '';
 
+  /**
+   * @param Google_Service_FirebaseDynamicLinks_DynamicLinkInfo
+   */
   public function setDynamicLinkInfo(Google_Service_FirebaseDynamicLinks_DynamicLinkInfo $dynamicLinkInfo)
   {
     $this->dynamicLinkInfo = $dynamicLinkInfo;
   }
+  /**
+   * @return Google_Service_FirebaseDynamicLinks_DynamicLinkInfo
+   */
   public function getDynamicLinkInfo()
   {
     return $this->dynamicLinkInfo;
@@ -39,10 +46,24 @@ class Google_Service_FirebaseDynamicLinks_CreateShortDynamicLinkRequest extends 
   {
     return $this->longDynamicLink;
   }
+  public function setSdkVersion($sdkVersion)
+  {
+    $this->sdkVersion = $sdkVersion;
+  }
+  public function getSdkVersion()
+  {
+    return $this->sdkVersion;
+  }
+  /**
+   * @param Google_Service_FirebaseDynamicLinks_Suffix
+   */
   public function setSuffix(Google_Service_FirebaseDynamicLinks_Suffix $suffix)
   {
     $this->suffix = $suffix;
   }
+  /**
+   * @return Google_Service_FirebaseDynamicLinks_Suffix
+   */
   public function getSuffix()
   {
     return $this->suffix;

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -26,7 +26,7 @@
 class Google_Service_PlusDomains_Resource_Audiences extends Google_Service_Resource
 {
   /**
-   * List all of the audiences to which a user can share.
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
    * (audiences.listAudiences)
    *
    * @param string $userId The ID of the user to get audiences for. The special

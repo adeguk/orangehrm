@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -27,7 +27,10 @@ class Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignupNewUserReq
   public $instanceId;
   public $localId;
   public $password;
+  public $phoneNumber;
   public $photoUrl;
+  public $tenantId;
+  public $tenantProjectNumber;
 
   public function setCaptchaChallenge($captchaChallenge)
   {
@@ -109,6 +112,14 @@ class Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignupNewUserReq
   {
     return $this->password;
   }
+  public function setPhoneNumber($phoneNumber)
+  {
+    $this->phoneNumber = $phoneNumber;
+  }
+  public function getPhoneNumber()
+  {
+    return $this->phoneNumber;
+  }
   public function setPhotoUrl($photoUrl)
   {
     $this->photoUrl = $photoUrl;
@@ -116,5 +127,21 @@ class Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignupNewUserReq
   public function getPhotoUrl()
   {
     return $this->photoUrl;
+  }
+  public function setTenantId($tenantId)
+  {
+    $this->tenantId = $tenantId;
+  }
+  public function getTenantId()
+  {
+    return $this->tenantId;
+  }
+  public function setTenantProjectNumber($tenantProjectNumber)
+  {
+    $this->tenantProjectNumber = $tenantProjectNumber;
+  }
+  public function getTenantProjectNumber()
+  {
+    return $this->tenantProjectNumber;
   }
 }

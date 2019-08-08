@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,6 +18,8 @@
 class Google_Service_AdSense_AdCode extends Google_Model
 {
   public $adCode;
+  public $ampBody;
+  public $ampHead;
   public $kind;
 
   public function setAdCode($adCode)
@@ -27,6 +29,22 @@ class Google_Service_AdSense_AdCode extends Google_Model
   public function getAdCode()
   {
     return $this->adCode;
+  }
+  public function setAmpBody($ampBody)
+  {
+    $this->ampBody = $ampBody;
+  }
+  public function getAmpBody()
+  {
+    return $this->ampBody;
+  }
+  public function setAmpHead($ampHead)
+  {
+    $this->ampHead = $ampHead;
+  }
+  public function getAmpHead()
+  {
+    return $this->ampHead;
   }
   public function setKind($kind)
   {

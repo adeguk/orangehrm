@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -48,6 +48,7 @@ class Google_Service_GamesConfiguration extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
     $this->servicePath = 'games/v1configuration/';
+    $this->batchPath = 'batch/gamesConfiguration/v1configuration';
     $this->version = 'v1configuration';
     $this->serviceName = 'gamesConfiguration';
 

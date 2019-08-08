@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,6 +20,7 @@ class Google_Service_AndroidPublisher_InAppProduct extends Google_Model
   public $defaultLanguage;
   protected $defaultPriceType = 'Google_Service_AndroidPublisher_Price';
   protected $defaultPriceDataType = '';
+  public $gracePeriod;
   protected $listingsType = 'Google_Service_AndroidPublisher_InAppProductListing';
   protected $listingsDataType = 'map';
   public $packageName;
@@ -41,18 +42,38 @@ class Google_Service_AndroidPublisher_InAppProduct extends Google_Model
   {
     return $this->defaultLanguage;
   }
+  /**
+   * @param Google_Service_AndroidPublisher_Price
+   */
   public function setDefaultPrice(Google_Service_AndroidPublisher_Price $defaultPrice)
   {
     $this->defaultPrice = $defaultPrice;
   }
+  /**
+   * @return Google_Service_AndroidPublisher_Price
+   */
   public function getDefaultPrice()
   {
     return $this->defaultPrice;
   }
+  public function setGracePeriod($gracePeriod)
+  {
+    $this->gracePeriod = $gracePeriod;
+  }
+  public function getGracePeriod()
+  {
+    return $this->gracePeriod;
+  }
+  /**
+   * @param Google_Service_AndroidPublisher_InAppProductListing
+   */
   public function setListings($listings)
   {
     $this->listings = $listings;
   }
+  /**
+   * @return Google_Service_AndroidPublisher_InAppProductListing
+   */
   public function getListings()
   {
     return $this->listings;
@@ -65,10 +86,16 @@ class Google_Service_AndroidPublisher_InAppProduct extends Google_Model
   {
     return $this->packageName;
   }
+  /**
+   * @param Google_Service_AndroidPublisher_Price
+   */
   public function setPrices($prices)
   {
     $this->prices = $prices;
   }
+  /**
+   * @return Google_Service_AndroidPublisher_Price
+   */
   public function getPrices()
   {
     return $this->prices;
@@ -81,10 +108,16 @@ class Google_Service_AndroidPublisher_InAppProduct extends Google_Model
   {
     return $this->purchaseType;
   }
+  /**
+   * @param Google_Service_AndroidPublisher_Season
+   */
   public function setSeason(Google_Service_AndroidPublisher_Season $season)
   {
     $this->season = $season;
   }
+  /**
+   * @return Google_Service_AndroidPublisher_Season
+   */
   public function getSeason()
   {
     return $this->season;

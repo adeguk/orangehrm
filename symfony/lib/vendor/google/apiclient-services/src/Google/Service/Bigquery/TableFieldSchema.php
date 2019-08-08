@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,6 +18,8 @@
 class Google_Service_Bigquery_TableFieldSchema extends Google_Collection
 {
   protected $collection_key = 'fields';
+  protected $categoriesType = 'Google_Service_Bigquery_TableFieldSchemaCategories';
+  protected $categoriesDataType = '';
   public $description;
   protected $fieldsType = 'Google_Service_Bigquery_TableFieldSchema';
   protected $fieldsDataType = 'array';
@@ -25,6 +27,20 @@ class Google_Service_Bigquery_TableFieldSchema extends Google_Collection
   public $name;
   public $type;
 
+  /**
+   * @param Google_Service_Bigquery_TableFieldSchemaCategories
+   */
+  public function setCategories(Google_Service_Bigquery_TableFieldSchemaCategories $categories)
+  {
+    $this->categories = $categories;
+  }
+  /**
+   * @return Google_Service_Bigquery_TableFieldSchemaCategories
+   */
+  public function getCategories()
+  {
+    return $this->categories;
+  }
   public function setDescription($description)
   {
     $this->description = $description;
@@ -33,10 +49,16 @@ class Google_Service_Bigquery_TableFieldSchema extends Google_Collection
   {
     return $this->description;
   }
+  /**
+   * @param Google_Service_Bigquery_TableFieldSchema
+   */
   public function setFields($fields)
   {
     $this->fields = $fields;
   }
+  /**
+   * @return Google_Service_Bigquery_TableFieldSchema
+   */
   public function getFields()
   {
     return $this->fields;

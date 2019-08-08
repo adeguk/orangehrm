@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,6 +20,7 @@ class Google_Service_SQLAdmin_Flag extends Google_Collection
   protected $collection_key = 'appliesTo';
   public $allowedStringValues;
   public $appliesTo;
+  public $inBeta;
   public $kind;
   public $maxValue;
   public $minValue;
@@ -42,6 +43,14 @@ class Google_Service_SQLAdmin_Flag extends Google_Collection
   public function getAppliesTo()
   {
     return $this->appliesTo;
+  }
+  public function setInBeta($inBeta)
+  {
+    $this->inBeta = $inBeta;
+  }
+  public function getInBeta()
+  {
+    return $this->inBeta;
   }
   public function setKind($kind)
   {

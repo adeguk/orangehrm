@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -57,8 +57,10 @@ class Google_Service_Slides_Resource_Presentations extends Google_Service_Resour
     return $this->call('batchUpdate', array($params), "Google_Service_Slides_BatchUpdatePresentationResponse");
   }
   /**
-   * Creates a new presentation using the title given in the request. Other fields
-   * in the request are ignored. Returns the created presentation.
+   * Creates a blank presentation using the title given in the request. If a
+   * `presentationId` is provided, it is used as the ID of the new presentation.
+   * Otherwise, a new ID is generated. Other fields in the request, including any
+   * provided content, are ignored. Returns the created presentation.
    * (presentations.create)
    *
    * @param Google_Service_Slides_Presentation $postBody

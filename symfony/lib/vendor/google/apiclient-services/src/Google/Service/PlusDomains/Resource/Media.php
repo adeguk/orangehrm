@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -26,10 +26,8 @@
 class Google_Service_PlusDomains_Resource_Media extends Google_Service_Resource
 {
   /**
-   * Add a new media item to an album. The current upload size limitations are
-   * 36MB for a photo and 1GB for a video. Uploads do not count against quota if
-   * photos are less than 2048 pixels on their longest side or videos are less
-   * than 15 minutes in length. (media.insert)
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
+   * (media.insert)
    *
    * @param string $userId The ID of the user to create the activity on behalf of.
    * @param string $collection

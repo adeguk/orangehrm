@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,11 +17,14 @@
 
 class Google_Service_ShoppingContent_AccountStatus extends Google_Collection
 {
-  protected $collection_key = 'dataQualityIssues';
+  protected $collection_key = 'products';
   public $accountId;
-  protected $dataQualityIssuesType = 'Google_Service_ShoppingContent_AccountStatusDataQualityIssue';
-  protected $dataQualityIssuesDataType = 'array';
+  protected $accountLevelIssuesType = 'Google_Service_ShoppingContent_AccountStatusAccountLevelIssue';
+  protected $accountLevelIssuesDataType = 'array';
   public $kind;
+  protected $productsType = 'Google_Service_ShoppingContent_AccountStatusProducts';
+  protected $productsDataType = 'array';
+  public $websiteClaimed;
 
   public function setAccountId($accountId)
   {
@@ -31,13 +34,19 @@ class Google_Service_ShoppingContent_AccountStatus extends Google_Collection
   {
     return $this->accountId;
   }
-  public function setDataQualityIssues($dataQualityIssues)
+  /**
+   * @param Google_Service_ShoppingContent_AccountStatusAccountLevelIssue
+   */
+  public function setAccountLevelIssues($accountLevelIssues)
   {
-    $this->dataQualityIssues = $dataQualityIssues;
+    $this->accountLevelIssues = $accountLevelIssues;
   }
-  public function getDataQualityIssues()
+  /**
+   * @return Google_Service_ShoppingContent_AccountStatusAccountLevelIssue
+   */
+  public function getAccountLevelIssues()
   {
-    return $this->dataQualityIssues;
+    return $this->accountLevelIssues;
   }
   public function setKind($kind)
   {
@@ -46,5 +55,27 @@ class Google_Service_ShoppingContent_AccountStatus extends Google_Collection
   public function getKind()
   {
     return $this->kind;
+  }
+  /**
+   * @param Google_Service_ShoppingContent_AccountStatusProducts
+   */
+  public function setProducts($products)
+  {
+    $this->products = $products;
+  }
+  /**
+   * @return Google_Service_ShoppingContent_AccountStatusProducts
+   */
+  public function getProducts()
+  {
+    return $this->products;
+  }
+  public function setWebsiteClaimed($websiteClaimed)
+  {
+    $this->websiteClaimed = $websiteClaimed;
+  }
+  public function getWebsiteClaimed()
+  {
+    return $this->websiteClaimed;
   }
 }

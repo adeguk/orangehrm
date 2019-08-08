@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,18 +24,23 @@ class Google_Service_Compute_ForwardingRule extends Google_Collection
   );
   public $iPAddress;
   public $iPProtocol;
+  public $allPorts;
   public $backendService;
   public $creationTimestamp;
   public $description;
   public $id;
+  public $ipVersion;
   public $kind;
   public $loadBalancingScheme;
   public $name;
   public $network;
+  public $networkTier;
   public $portRange;
   public $ports;
   public $region;
   public $selfLink;
+  public $serviceLabel;
+  public $serviceName;
   public $subnetwork;
   public $target;
 
@@ -54,6 +59,14 @@ class Google_Service_Compute_ForwardingRule extends Google_Collection
   public function getIPProtocol()
   {
     return $this->iPProtocol;
+  }
+  public function setAllPorts($allPorts)
+  {
+    $this->allPorts = $allPorts;
+  }
+  public function getAllPorts()
+  {
+    return $this->allPorts;
   }
   public function setBackendService($backendService)
   {
@@ -87,6 +100,14 @@ class Google_Service_Compute_ForwardingRule extends Google_Collection
   {
     return $this->id;
   }
+  public function setIpVersion($ipVersion)
+  {
+    $this->ipVersion = $ipVersion;
+  }
+  public function getIpVersion()
+  {
+    return $this->ipVersion;
+  }
   public function setKind($kind)
   {
     $this->kind = $kind;
@@ -119,6 +140,14 @@ class Google_Service_Compute_ForwardingRule extends Google_Collection
   {
     return $this->network;
   }
+  public function setNetworkTier($networkTier)
+  {
+    $this->networkTier = $networkTier;
+  }
+  public function getNetworkTier()
+  {
+    return $this->networkTier;
+  }
   public function setPortRange($portRange)
   {
     $this->portRange = $portRange;
@@ -150,6 +179,22 @@ class Google_Service_Compute_ForwardingRule extends Google_Collection
   public function getSelfLink()
   {
     return $this->selfLink;
+  }
+  public function setServiceLabel($serviceLabel)
+  {
+    $this->serviceLabel = $serviceLabel;
+  }
+  public function getServiceLabel()
+  {
+    return $this->serviceLabel;
+  }
+  public function setServiceName($serviceName)
+  {
+    $this->serviceName = $serviceName;
+  }
+  public function getServiceName()
+  {
+    return $this->serviceName;
   }
   public function setSubnetwork($subnetwork)
   {

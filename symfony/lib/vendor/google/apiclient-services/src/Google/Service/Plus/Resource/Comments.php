@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -26,7 +26,8 @@
 class Google_Service_Plus_Resource_Comments extends Google_Service_Resource
 {
   /**
-   * Get a comment. (comments.get)
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
+   * (comments.get)
    *
    * @param string $commentId The ID of the comment to get.
    * @param array $optParams Optional parameters.
@@ -39,7 +40,8 @@ class Google_Service_Plus_Resource_Comments extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Plus_Comment");
   }
   /**
-   * List all of the comments for an activity. (comments.listComments)
+   * Shut down. See https://developers.google.com/+/api-shutdown for more details.
+   * (comments.listComments)
    *
    * @param string $activityId The ID of the activity to get comments for.
    * @param array $optParams Optional parameters.

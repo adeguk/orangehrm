@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -21,14 +21,23 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Model extends Goo
   protected $defaultVersionType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version';
   protected $defaultVersionDataType = '';
   public $description;
+  public $etag;
+  public $labels;
   public $name;
+  public $onlinePredictionConsoleLogging;
   public $onlinePredictionLogging;
   public $regions;
 
+  /**
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version
+   */
   public function setDefaultVersion(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version $defaultVersion)
   {
     $this->defaultVersion = $defaultVersion;
   }
+  /**
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version
+   */
   public function getDefaultVersion()
   {
     return $this->defaultVersion;
@@ -41,6 +50,22 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Model extends Goo
   {
     return $this->description;
   }
+  public function setEtag($etag)
+  {
+    $this->etag = $etag;
+  }
+  public function getEtag()
+  {
+    return $this->etag;
+  }
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  public function getLabels()
+  {
+    return $this->labels;
+  }
   public function setName($name)
   {
     $this->name = $name;
@@ -48,6 +73,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Model extends Goo
   public function getName()
   {
     return $this->name;
+  }
+  public function setOnlinePredictionConsoleLogging($onlinePredictionConsoleLogging)
+  {
+    $this->onlinePredictionConsoleLogging = $onlinePredictionConsoleLogging;
+  }
+  public function getOnlinePredictionConsoleLogging()
+  {
+    return $this->onlinePredictionConsoleLogging;
   }
   public function setOnlinePredictionLogging($onlinePredictionLogging)
   {

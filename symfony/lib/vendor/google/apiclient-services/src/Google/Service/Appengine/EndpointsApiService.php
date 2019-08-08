@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,7 +18,9 @@
 class Google_Service_Appengine_EndpointsApiService extends Google_Model
 {
   public $configId;
+  public $disableTraceSampling;
   public $name;
+  public $rolloutStrategy;
 
   public function setConfigId($configId)
   {
@@ -28,6 +30,14 @@ class Google_Service_Appengine_EndpointsApiService extends Google_Model
   {
     return $this->configId;
   }
+  public function setDisableTraceSampling($disableTraceSampling)
+  {
+    $this->disableTraceSampling = $disableTraceSampling;
+  }
+  public function getDisableTraceSampling()
+  {
+    return $this->disableTraceSampling;
+  }
   public function setName($name)
   {
     $this->name = $name;
@@ -35,5 +45,13 @@ class Google_Service_Appengine_EndpointsApiService extends Google_Model
   public function getName()
   {
     return $this->name;
+  }
+  public function setRolloutStrategy($rolloutStrategy)
+  {
+    $this->rolloutStrategy = $rolloutStrategy;
+  }
+  public function getRolloutStrategy()
+  {
+    return $this->rolloutStrategy;
   }
 }

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,30 +20,61 @@ class Google_Service_Container_NodePool extends Google_Collection
   protected $collection_key = 'instanceGroupUrls';
   protected $autoscalingType = 'Google_Service_Container_NodePoolAutoscaling';
   protected $autoscalingDataType = '';
+  protected $conditionsType = 'Google_Service_Container_StatusCondition';
+  protected $conditionsDataType = 'array';
   protected $configType = 'Google_Service_Container_NodeConfig';
   protected $configDataType = '';
   public $initialNodeCount;
   public $instanceGroupUrls;
   protected $managementType = 'Google_Service_Container_NodeManagement';
   protected $managementDataType = '';
+  protected $maxPodsConstraintType = 'Google_Service_Container_MaxPodsConstraint';
+  protected $maxPodsConstraintDataType = '';
   public $name;
+  public $podIpv4CidrSize;
   public $selfLink;
   public $status;
   public $statusMessage;
   public $version;
 
+  /**
+   * @param Google_Service_Container_NodePoolAutoscaling
+   */
   public function setAutoscaling(Google_Service_Container_NodePoolAutoscaling $autoscaling)
   {
     $this->autoscaling = $autoscaling;
   }
+  /**
+   * @return Google_Service_Container_NodePoolAutoscaling
+   */
   public function getAutoscaling()
   {
     return $this->autoscaling;
   }
+  /**
+   * @param Google_Service_Container_StatusCondition
+   */
+  public function setConditions($conditions)
+  {
+    $this->conditions = $conditions;
+  }
+  /**
+   * @return Google_Service_Container_StatusCondition
+   */
+  public function getConditions()
+  {
+    return $this->conditions;
+  }
+  /**
+   * @param Google_Service_Container_NodeConfig
+   */
   public function setConfig(Google_Service_Container_NodeConfig $config)
   {
     $this->config = $config;
   }
+  /**
+   * @return Google_Service_Container_NodeConfig
+   */
   public function getConfig()
   {
     return $this->config;
@@ -64,13 +95,33 @@ class Google_Service_Container_NodePool extends Google_Collection
   {
     return $this->instanceGroupUrls;
   }
+  /**
+   * @param Google_Service_Container_NodeManagement
+   */
   public function setManagement(Google_Service_Container_NodeManagement $management)
   {
     $this->management = $management;
   }
+  /**
+   * @return Google_Service_Container_NodeManagement
+   */
   public function getManagement()
   {
     return $this->management;
+  }
+  /**
+   * @param Google_Service_Container_MaxPodsConstraint
+   */
+  public function setMaxPodsConstraint(Google_Service_Container_MaxPodsConstraint $maxPodsConstraint)
+  {
+    $this->maxPodsConstraint = $maxPodsConstraint;
+  }
+  /**
+   * @return Google_Service_Container_MaxPodsConstraint
+   */
+  public function getMaxPodsConstraint()
+  {
+    return $this->maxPodsConstraint;
   }
   public function setName($name)
   {
@@ -79,6 +130,14 @@ class Google_Service_Container_NodePool extends Google_Collection
   public function getName()
   {
     return $this->name;
+  }
+  public function setPodIpv4CidrSize($podIpv4CidrSize)
+  {
+    $this->podIpv4CidrSize = $podIpv4CidrSize;
+  }
+  public function getPodIpv4CidrSize()
+  {
+    return $this->podIpv4CidrSize;
   }
   public function setSelfLink($selfLink)
   {

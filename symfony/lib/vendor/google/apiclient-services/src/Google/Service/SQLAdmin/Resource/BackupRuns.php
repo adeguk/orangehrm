@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -78,7 +78,7 @@ class Google_Service_SQLAdmin_Resource_BackupRuns extends Google_Service_Resourc
   }
   /**
    * Lists all backup runs associated with a given instance and configuration in
-   * the reverse chronological order of the enqueued time.
+   * the reverse chronological order of the backup initiation time.
    * (backupRuns.listBackupRuns)
    *
    * @param string $project Project ID of the project that contains the instance.

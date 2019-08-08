@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,13 +18,28 @@
 class Google_Service_Dataflow_ReportWorkItemStatusResponse extends Google_Collection
 {
   protected $collection_key = 'workItemServiceStates';
+  public $unifiedWorkerResponse;
   protected $workItemServiceStatesType = 'Google_Service_Dataflow_WorkItemServiceState';
   protected $workItemServiceStatesDataType = 'array';
 
+  public function setUnifiedWorkerResponse($unifiedWorkerResponse)
+  {
+    $this->unifiedWorkerResponse = $unifiedWorkerResponse;
+  }
+  public function getUnifiedWorkerResponse()
+  {
+    return $this->unifiedWorkerResponse;
+  }
+  /**
+   * @param Google_Service_Dataflow_WorkItemServiceState
+   */
   public function setWorkItemServiceStates($workItemServiceStates)
   {
     $this->workItemServiceStates = $workItemServiceStates;
   }
+  /**
+   * @return Google_Service_Dataflow_WorkItemServiceState
+   */
   public function getWorkItemServiceStates()
   {
     return $this->workItemServiceStates;

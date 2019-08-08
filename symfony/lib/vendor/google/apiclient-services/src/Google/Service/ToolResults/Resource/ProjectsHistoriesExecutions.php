@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -85,7 +85,7 @@ class Google_Service_ToolResults_Resource_ProjectsHistoriesExecutions extends Go
     return $this->call('get', array($params), "Google_Service_ToolResults_Execution");
   }
   /**
-   * Lists Histories for a given Project.
+   * Lists Executions for a given History.
    *
    * The executions are sorted by creation_time in descending order. The
    * execution_id key will be used to order the executions with the same

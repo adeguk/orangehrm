@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,11 +18,21 @@
 class Google_Service_Dataflow_WorkerHealthReport extends Google_Collection
 {
   protected $collection_key = 'pods';
+  public $msg;
   public $pods;
   public $reportInterval;
+  public $vmIsBroken;
   public $vmIsHealthy;
   public $vmStartupTime;
 
+  public function setMsg($msg)
+  {
+    $this->msg = $msg;
+  }
+  public function getMsg()
+  {
+    return $this->msg;
+  }
   public function setPods($pods)
   {
     $this->pods = $pods;
@@ -38,6 +48,14 @@ class Google_Service_Dataflow_WorkerHealthReport extends Google_Collection
   public function getReportInterval()
   {
     return $this->reportInterval;
+  }
+  public function setVmIsBroken($vmIsBroken)
+  {
+    $this->vmIsBroken = $vmIsBroken;
+  }
+  public function getVmIsBroken()
+  {
+    return $this->vmIsBroken;
   }
   public function setVmIsHealthy($vmIsHealthy)
   {

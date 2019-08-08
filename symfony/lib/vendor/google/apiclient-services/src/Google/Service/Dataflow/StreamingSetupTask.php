@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,8 @@ class Google_Service_Dataflow_StreamingSetupTask extends Google_Model
 {
   public $drain;
   public $receiveWorkPort;
+  protected $snapshotConfigType = 'Google_Service_Dataflow_StreamingApplianceSnapshotConfig';
+  protected $snapshotConfigDataType = '';
   protected $streamingComputationTopologyType = 'Google_Service_Dataflow_TopologyConfig';
   protected $streamingComputationTopologyDataType = '';
   public $workerHarnessPort;
@@ -39,10 +41,30 @@ class Google_Service_Dataflow_StreamingSetupTask extends Google_Model
   {
     return $this->receiveWorkPort;
   }
+  /**
+   * @param Google_Service_Dataflow_StreamingApplianceSnapshotConfig
+   */
+  public function setSnapshotConfig(Google_Service_Dataflow_StreamingApplianceSnapshotConfig $snapshotConfig)
+  {
+    $this->snapshotConfig = $snapshotConfig;
+  }
+  /**
+   * @return Google_Service_Dataflow_StreamingApplianceSnapshotConfig
+   */
+  public function getSnapshotConfig()
+  {
+    return $this->snapshotConfig;
+  }
+  /**
+   * @param Google_Service_Dataflow_TopologyConfig
+   */
   public function setStreamingComputationTopology(Google_Service_Dataflow_TopologyConfig $streamingComputationTopology)
   {
     $this->streamingComputationTopology = $streamingComputationTopology;
   }
+  /**
+   * @return Google_Service_Dataflow_TopologyConfig
+   */
   public function getStreamingComputationTopology()
   {
     return $this->streamingComputationTopology;

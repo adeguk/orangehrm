@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,9 @@ class Google_Service_ServiceControl_CheckError extends Google_Model
 {
   public $code;
   public $detail;
+  protected $statusType = 'Google_Service_ServiceControl_Status';
+  protected $statusDataType = '';
+  public $subject;
 
   public function setCode($code)
   {
@@ -35,5 +38,27 @@ class Google_Service_ServiceControl_CheckError extends Google_Model
   public function getDetail()
   {
     return $this->detail;
+  }
+  /**
+   * @param Google_Service_ServiceControl_Status
+   */
+  public function setStatus(Google_Service_ServiceControl_Status $status)
+  {
+    $this->status = $status;
+  }
+  /**
+   * @return Google_Service_ServiceControl_Status
+   */
+  public function getStatus()
+  {
+    return $this->status;
+  }
+  public function setSubject($subject)
+  {
+    $this->subject = $subject;
+  }
+  public function getSubject()
+  {
+    return $this->subject;
   }
 }

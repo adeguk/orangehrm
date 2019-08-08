@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -73,6 +73,7 @@ class Google_Service_AdSense extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
     $this->servicePath = 'adsense/v1.4/';
+    $this->batchPath = 'batch/adsense/v1.4';
     $this->version = 'v1.4';
     $this->serviceName = 'adsense';
 
@@ -119,7 +120,22 @@ class Google_Service_AdSense extends Google_Service
         'adclients',
         array(
           'methods' => array(
-            'list' => array(
+            'getAdCode' => array(
+              'path' => 'accounts/{accountId}/adclients/{adClientId}/adcode',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'accountId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'adClientId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
               'path' => 'accounts/{accountId}/adclients',
               'httpMethod' => 'GET',
               'parameters' => array(

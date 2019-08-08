@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,11 +20,19 @@ class Google_Service_Spanner_ResultSetStats extends Google_Model
   protected $queryPlanType = 'Google_Service_Spanner_QueryPlan';
   protected $queryPlanDataType = '';
   public $queryStats;
+  public $rowCountExact;
+  public $rowCountLowerBound;
 
+  /**
+   * @param Google_Service_Spanner_QueryPlan
+   */
   public function setQueryPlan(Google_Service_Spanner_QueryPlan $queryPlan)
   {
     $this->queryPlan = $queryPlan;
   }
+  /**
+   * @return Google_Service_Spanner_QueryPlan
+   */
   public function getQueryPlan()
   {
     return $this->queryPlan;
@@ -36,5 +44,21 @@ class Google_Service_Spanner_ResultSetStats extends Google_Model
   public function getQueryStats()
   {
     return $this->queryStats;
+  }
+  public function setRowCountExact($rowCountExact)
+  {
+    $this->rowCountExact = $rowCountExact;
+  }
+  public function getRowCountExact()
+  {
+    return $this->rowCountExact;
+  }
+  public function setRowCountLowerBound($rowCountLowerBound)
+  {
+    $this->rowCountLowerBound = $rowCountLowerBound;
+  }
+  public function getRowCountLowerBound()
+  {
+    return $this->rowCountLowerBound;
   }
 }

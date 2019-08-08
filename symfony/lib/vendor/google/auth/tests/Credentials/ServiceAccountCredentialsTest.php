@@ -23,6 +23,7 @@ use Google\Auth\Credentials\ServiceAccountJwtAccessCredentials;
 use Google\Auth\CredentialsLoader;
 use Google\Auth\OAuth2;
 use GuzzleHttp\Psr7;
+use PHPUnit\Framework\TestCase;
 
 // Creates a standard JSON auth object for testing.
 function createTestJson()
@@ -36,7 +37,7 @@ function createTestJson()
     ];
 }
 
-class SACGetCacheKeyTest extends \PHPUnit_Framework_TestCase
+class SACGetCacheKeyTest extends TestCase
 {
     public function testShouldBeTheSameAsOAuth2WithTheSameScope()
     {
@@ -87,7 +88,7 @@ class SACGetCacheKeyTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class SACConstructorTest extends \PHPUnit_Framework_TestCase
+class SACConstructorTest extends TestCase
 {
     /**
      * @expectedException InvalidArgumentException
@@ -146,9 +147,27 @@ class SACConstructorTest extends \PHPUnit_Framework_TestCase
             new ServiceAccountCredentials('scope/1', $keyFile)
         );
     }
+
+    /**
+     * @expectedException LogicException
+     */
+    public function testFailsToInitializeFromInvalidJsonData()
+    {
+        $tmp = tmpfile();
+        fwrite($tmp, '{');
+
+        $path = stream_get_meta_data($tmp)['uri'];
+
+        try {
+            new ServiceAccountCredentials('scope/1', $path);
+        } catch (\Exception $e) {
+            fclose($tmp);
+            throw $e;
+        }
+    }
 }
 
-class SACFromEnvTest extends \PHPUnit_Framework_TestCase
+class SACFromEnvTest extends TestCase
 {
     protected function tearDown()
     {
@@ -178,7 +197,7 @@ class SACFromEnvTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class SACFromWellKnownFileTest extends \PHPUnit_Framework_TestCase
+class SACFromWellKnownFileTest extends TestCase
 {
     private $originalHome;
 
@@ -211,7 +230,7 @@ class SACFromWellKnownFileTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class SACFetchAuthTokenTest extends \PHPUnit_Framework_TestCase
+class SACFetchAuthTokenTest extends TestCase
 {
     private $privateKey;
 
@@ -293,21 +312,33 @@ class SACFetchAuthTokenTest extends \PHPUnit_Framework_TestCase
             $testJson
         );
         $update_metadata = $sa->getUpdateMetadataFunc();
-        $this->assertTrue(is_callable($update_metadata));
+        $this->assertInternalType('callable', $update_metadata);
 
         $actual_metadata = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = null,
             $httpHandler);
-        $this->assertTrue(
-            isset($actual_metadata[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertArrayHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata
+        );
         $this->assertEquals(
             $actual_metadata[CredentialsLoader::AUTH_METADATA_KEY],
             array('Bearer ' . $access_token));
     }
 }
 
-class SACJwtAccessTest extends \PHPUnit_Framework_TestCase
+class SACGetClientNameTest extends TestCase
+{
+    public function testReturnsClientEmail()
+    {
+        $testJson = createTestJson();
+        $sa = new ServiceAccountCredentials('scope/1', $testJson);
+        $this->assertEquals($testJson['client_email'], $sa->getClientName());
+    }
+}
+
+class SACJwtAccessTest extends TestCase
 {
     private $privateKey;
 
@@ -323,6 +354,41 @@ class SACJwtAccessTest extends \PHPUnit_Framework_TestCase
         $testJson['private_key'] = $this->privateKey;
 
         return $testJson;
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testFailsToInitalizeFromANonExistentFile()
+    {
+        $keyFile = __DIR__ . '/../fixtures' . '/does-not-exist-private.json';
+        new ServiceAccountJwtAccessCredentials($keyFile);
+    }
+
+    public function testInitalizeFromAFile()
+    {
+        $keyFile = __DIR__ . '/../fixtures' . '/private.json';
+        $this->assertNotNull(
+            new ServiceAccountJwtAccessCredentials($keyFile)
+        );
+    }
+
+    /**
+     * @expectedException LogicException
+     */
+    public function testFailsToInitializeFromInvalidJsonData()
+    {
+        $tmp = tmpfile();
+        fwrite($tmp, '{');
+
+        $path = stream_get_meta_data($tmp)['uri'];
+
+        try {
+            new ServiceAccountJwtAccessCredentials($path);
+        } catch (\Exception $e) {
+            fclose($tmp);
+            throw $e;
+        }
     }
 
     /**
@@ -382,13 +448,15 @@ class SACJwtAccessTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($sa);
 
         $update_metadata = $sa->getUpdateMetadataFunc();
-        $this->assertTrue(is_callable($update_metadata));
+        $this->assertInternalType('callable', $update_metadata);
 
         $actual_metadata = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = null);
-        $this->assertTrue(
-            !isset($actual_metadata[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertArrayNotHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata
+        );
     }
 
     public function testUpdateMetadataFunc()
@@ -400,40 +468,44 @@ class SACJwtAccessTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($sa);
 
         $update_metadata = $sa->getUpdateMetadataFunc();
-        $this->assertTrue(is_callable($update_metadata));
+        $this->assertInternalType('callable', $update_metadata);
 
         $actual_metadata = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = 'https://example.com/service');
-        $this->assertTrue(
-            isset($actual_metadata[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertArrayHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata
+        );
 
         $authorization = $actual_metadata[CredentialsLoader::AUTH_METADATA_KEY];
-        $this->assertTrue(is_array($authorization));
+        $this->assertInternalType('array', $authorization);
 
         $bearer_token = current($authorization);
-        $this->assertTrue(is_string($bearer_token));
-        $this->assertTrue(strpos($bearer_token, 'Bearer ') == 0);
-        $this->assertTrue(strlen($bearer_token) > 30);
+        $this->assertInternalType('string', $bearer_token);
+        $this->assertEquals(0, strpos($bearer_token, 'Bearer '));
+        $this->assertGreaterThan(30, strlen($bearer_token));
 
         $actual_metadata2 = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = 'https://example.com/anotherService');
-        $this->assertTrue(
-            isset($actual_metadata2[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertArrayHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata2
+        );
 
         $authorization2 = $actual_metadata2[CredentialsLoader::AUTH_METADATA_KEY];
-        $this->assertTrue(is_array($authorization2));
+        $this->assertInternalType('array', $authorization2);
 
         $bearer_token2 = current($authorization2);
-        $this->assertTrue(is_string($bearer_token2));
-        $this->assertTrue(strpos($bearer_token2, 'Bearer ') == 0);
-        $this->assertTrue(strlen($bearer_token2) > 30);
-        $this->assertTrue($bearer_token != $bearer_token2);
+        $this->assertInternalType('string', $bearer_token2);
+        $this->assertEquals(0, strpos($bearer_token2, 'Bearer '));
+        $this->assertGreaterThan(30, strlen($bearer_token2));
+        $this->assertNotEquals($bearer_token2, $bearer_token);
     }
 }
 
-class SACJwtAccessComboTest extends \PHPUnit_Framework_TestCase
+class SACJwtAccessComboTest extends TestCase
 {
     private $privateKey;
 
@@ -464,21 +536,23 @@ class SACJwtAccessComboTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($sa);
 
         $update_metadata = $sa->getUpdateMetadataFunc();
-        $this->assertTrue(is_callable($update_metadata));
+        $this->assertInternalType('callable', $update_metadata);
 
         $actual_metadata = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = 'https://example.com/service');
-        $this->assertTrue(
-            isset($actual_metadata[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertArrayHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata
+        );
 
         $authorization = $actual_metadata[CredentialsLoader::AUTH_METADATA_KEY];
-        $this->assertTrue(is_array($authorization));
+        $this->assertInternalType('array', $authorization);
 
         $bearer_token = current($authorization);
-        $this->assertTrue(is_string($bearer_token));
-        $this->assertTrue(strpos($bearer_token, 'Bearer ') == 0);
-        $this->assertTrue(strlen($bearer_token) > 30);
+        $this->assertInternalType('string', $bearer_token);
+        $this->assertEquals(0, strpos($bearer_token, 'Bearer '));
+        $this->assertGreaterThan(30, strlen($bearer_token));
     }
 
     public function testNoScopeAndNoAuthUri()
@@ -494,15 +568,38 @@ class SACJwtAccessComboTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($sa);
 
         $update_metadata = $sa->getUpdateMetadataFunc();
-        $this->assertTrue(is_callable($update_metadata));
+        $this->assertInternalType('callable', $update_metadata);
 
         $actual_metadata = call_user_func($update_metadata,
             $metadata = array('foo' => 'bar'),
             $authUri = null);
         // no access_token is added to the metadata hash
         // but also, no error should be thrown
-        $this->assertTrue(is_array($actual_metadata));
-        $this->assertTrue(
-            !isset($actual_metadata[CredentialsLoader::AUTH_METADATA_KEY]));
+        $this->assertInternalType('array', $actual_metadata);
+        $this->assertArrayNotHasKey(
+            CredentialsLoader::AUTH_METADATA_KEY,
+            $actual_metadata
+        );
+    }
+}
+
+class SACJWTGetCacheKeyTest extends TestCase
+{
+    public function testShouldBeTheSameAsOAuth2WithTheSameScope()
+    {
+        $testJson = createTestJson();
+        $scope = ['scope/1', 'scope/2'];
+        $sa = new ServiceAccountJwtAccessCredentials($testJson);
+        $this->assertNull($sa->getCacheKey());
+    }
+}
+
+class SACJWTGetClientNameTest extends TestCase
+{
+    public function testReturnsClientEmail()
+    {
+        $testJson = createTestJson();
+        $sa = new ServiceAccountJwtAccessCredentials($testJson);
+        $this->assertEquals($testJson['client_email'], $sa->getClientName());
     }
 }

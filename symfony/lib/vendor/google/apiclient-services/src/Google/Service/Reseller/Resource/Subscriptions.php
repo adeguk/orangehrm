@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -117,7 +117,7 @@ class Google_Service_Reseller_Resource_Subscriptions extends Google_Service_Reso
     return $this->call('changeSeats', array($params), "Google_Service_Reseller_Subscription");
   }
   /**
-   * Cancel, suspend or transfer a subscription to direct. (subscriptions.delete)
+   * Cancel or transfer a subscription to direct. (subscriptions.delete)
    *
    * @param string $customerId Either the customer's primary domain name or the
    * customer's unique identifier. If using the domain name, we do not recommend

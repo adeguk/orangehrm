@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,23 +15,35 @@
  * the License.
  */
 
-class Google_Service_CloudBuild_BuildTrigger extends Google_Model
+class Google_Service_CloudBuild_BuildTrigger extends Google_Collection
 {
+  protected $collection_key = 'tags';
   protected $buildType = 'Google_Service_CloudBuild_Build';
   protected $buildDataType = '';
   public $createTime;
   public $description;
   public $disabled;
   public $filename;
+  protected $githubType = 'Google_Service_CloudBuild_GitHubEventsConfig';
+  protected $githubDataType = '';
   public $id;
+  public $ignoredFiles;
+  public $includedFiles;
   public $substitutions;
+  public $tags;
   protected $triggerTemplateType = 'Google_Service_CloudBuild_RepoSource';
   protected $triggerTemplateDataType = '';
 
+  /**
+   * @param Google_Service_CloudBuild_Build
+   */
   public function setBuild(Google_Service_CloudBuild_Build $build)
   {
     $this->build = $build;
   }
+  /**
+   * @return Google_Service_CloudBuild_Build
+   */
   public function getBuild()
   {
     return $this->build;
@@ -68,6 +80,20 @@ class Google_Service_CloudBuild_BuildTrigger extends Google_Model
   {
     return $this->filename;
   }
+  /**
+   * @param Google_Service_CloudBuild_GitHubEventsConfig
+   */
+  public function setGithub(Google_Service_CloudBuild_GitHubEventsConfig $github)
+  {
+    $this->github = $github;
+  }
+  /**
+   * @return Google_Service_CloudBuild_GitHubEventsConfig
+   */
+  public function getGithub()
+  {
+    return $this->github;
+  }
   public function setId($id)
   {
     $this->id = $id;
@@ -75,6 +101,22 @@ class Google_Service_CloudBuild_BuildTrigger extends Google_Model
   public function getId()
   {
     return $this->id;
+  }
+  public function setIgnoredFiles($ignoredFiles)
+  {
+    $this->ignoredFiles = $ignoredFiles;
+  }
+  public function getIgnoredFiles()
+  {
+    return $this->ignoredFiles;
+  }
+  public function setIncludedFiles($includedFiles)
+  {
+    $this->includedFiles = $includedFiles;
+  }
+  public function getIncludedFiles()
+  {
+    return $this->includedFiles;
   }
   public function setSubstitutions($substitutions)
   {
@@ -84,10 +126,24 @@ class Google_Service_CloudBuild_BuildTrigger extends Google_Model
   {
     return $this->substitutions;
   }
+  public function setTags($tags)
+  {
+    $this->tags = $tags;
+  }
+  public function getTags()
+  {
+    return $this->tags;
+  }
+  /**
+   * @param Google_Service_CloudBuild_RepoSource
+   */
   public function setTriggerTemplate(Google_Service_CloudBuild_RepoSource $triggerTemplate)
   {
     $this->triggerTemplate = $triggerTemplate;
   }
+  /**
+   * @return Google_Service_CloudBuild_RepoSource
+   */
   public function getTriggerTemplate()
   {
     return $this->triggerTemplate;

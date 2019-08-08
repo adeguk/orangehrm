@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,11 +15,39 @@
  * the License.
  */
 
-class Google_Service_AndroidEnterprise_AppVersion extends Google_Model
+class Google_Service_AndroidEnterprise_AppVersion extends Google_Collection
 {
+  protected $collection_key = 'trackId';
+  public $isProduction;
+  public $track;
+  public $trackId;
   public $versionCode;
   public $versionString;
 
+  public function setIsProduction($isProduction)
+  {
+    $this->isProduction = $isProduction;
+  }
+  public function getIsProduction()
+  {
+    return $this->isProduction;
+  }
+  public function setTrack($track)
+  {
+    $this->track = $track;
+  }
+  public function getTrack()
+  {
+    return $this->track;
+  }
+  public function setTrackId($trackId)
+  {
+    $this->trackId = $trackId;
+  }
+  public function getTrackId()
+  {
+    return $this->trackId;
+  }
   public function setVersionCode($versionCode)
   {
     $this->versionCode = $versionCode;

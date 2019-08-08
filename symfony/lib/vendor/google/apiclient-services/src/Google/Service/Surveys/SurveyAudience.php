@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -23,7 +23,6 @@ class Google_Service_Surveys_SurveyAudience extends Google_Collection
   public $countrySubdivision;
   public $gender;
   public $languages;
-  public $mobileAppPanelId;
   public $populationSource;
 
   public function setAges($ages)
@@ -65,14 +64,6 @@ class Google_Service_Surveys_SurveyAudience extends Google_Collection
   public function getLanguages()
   {
     return $this->languages;
-  }
-  public function setMobileAppPanelId($mobileAppPanelId)
-  {
-    $this->mobileAppPanelId = $mobileAppPanelId;
-  }
-  public function getMobileAppPanelId()
-  {
-    return $this->mobileAppPanelId;
   }
   public function setPopulationSource($populationSource)
   {

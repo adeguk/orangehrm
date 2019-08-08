@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,18 +15,44 @@
  * the License.
  */
 
-class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends Google_Model
+class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends Google_Collection
 {
+  protected $collection_key = 'packageUris';
+  protected $autoScalingType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling';
+  protected $autoScalingDataType = '';
   public $createTime;
   public $deploymentUri;
   public $description;
+  public $errorMessage;
+  public $etag;
+  public $framework;
   public $isDefault;
+  public $labels;
   public $lastUseTime;
+  public $machineType;
   protected $manualScalingType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling';
   protected $manualScalingDataType = '';
   public $name;
+  public $packageUris;
+  public $predictionClass;
+  public $pythonVersion;
   public $runtimeVersion;
+  public $state;
 
+  /**
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling
+   */
+  public function setAutoScaling(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling $autoScaling)
+  {
+    $this->autoScaling = $autoScaling;
+  }
+  /**
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling
+   */
+  public function getAutoScaling()
+  {
+    return $this->autoScaling;
+  }
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
@@ -51,6 +77,30 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   {
     return $this->description;
   }
+  public function setErrorMessage($errorMessage)
+  {
+    $this->errorMessage = $errorMessage;
+  }
+  public function getErrorMessage()
+  {
+    return $this->errorMessage;
+  }
+  public function setEtag($etag)
+  {
+    $this->etag = $etag;
+  }
+  public function getEtag()
+  {
+    return $this->etag;
+  }
+  public function setFramework($framework)
+  {
+    $this->framework = $framework;
+  }
+  public function getFramework()
+  {
+    return $this->framework;
+  }
   public function setIsDefault($isDefault)
   {
     $this->isDefault = $isDefault;
@@ -58,6 +108,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   public function getIsDefault()
   {
     return $this->isDefault;
+  }
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  public function getLabels()
+  {
+    return $this->labels;
   }
   public function setLastUseTime($lastUseTime)
   {
@@ -67,10 +125,24 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   {
     return $this->lastUseTime;
   }
+  public function setMachineType($machineType)
+  {
+    $this->machineType = $machineType;
+  }
+  public function getMachineType()
+  {
+    return $this->machineType;
+  }
+  /**
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling
+   */
   public function setManualScaling(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling $manualScaling)
   {
     $this->manualScaling = $manualScaling;
   }
+  /**
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling
+   */
   public function getManualScaling()
   {
     return $this->manualScaling;
@@ -83,6 +155,30 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   {
     return $this->name;
   }
+  public function setPackageUris($packageUris)
+  {
+    $this->packageUris = $packageUris;
+  }
+  public function getPackageUris()
+  {
+    return $this->packageUris;
+  }
+  public function setPredictionClass($predictionClass)
+  {
+    $this->predictionClass = $predictionClass;
+  }
+  public function getPredictionClass()
+  {
+    return $this->predictionClass;
+  }
+  public function setPythonVersion($pythonVersion)
+  {
+    $this->pythonVersion = $pythonVersion;
+  }
+  public function getPythonVersion()
+  {
+    return $this->pythonVersion;
+  }
   public function setRuntimeVersion($runtimeVersion)
   {
     $this->runtimeVersion = $runtimeVersion;
@@ -90,5 +186,13 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   public function getRuntimeVersion()
   {
     return $this->runtimeVersion;
+  }
+  public function setState($state)
+  {
+    $this->state = $state;
+  }
+  public function getState()
+  {
+    return $this->state;
   }
 }

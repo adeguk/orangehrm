@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -86,6 +86,7 @@ class Google_Service_Fitness extends Google_Service
       "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
   public $users_dataSources;
+  public $users_dataSources_dataPointChanges;
   public $users_dataSources_datasets;
   public $users_dataset;
   public $users_sessions;
@@ -100,6 +101,7 @@ class Google_Service_Fitness extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
     $this->servicePath = 'fitness/v1/users/';
+    $this->batchPath = 'batch/fitness/v1';
     $this->version = 'v1';
     $this->serviceName = 'fitness';
 
@@ -164,21 +166,6 @@ class Google_Service_Fitness extends Google_Service
                   'repeated' => true,
                 ),
               ),
-            ),'patch' => array(
-              'path' => '{userId}/dataSources/{dataSourceId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'dataSourceId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'update' => array(
               'path' => '{userId}/dataSources/{dataSourceId}',
               'httpMethod' => 'PUT',
@@ -192,6 +179,39 @@ class Google_Service_Fitness extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->users_dataSources_dataPointChanges = new Google_Service_Fitness_Resource_UsersDataSourcesDataPointChanges(
+        $this,
+        $this->serviceName,
+        'dataPointChanges',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => '{userId}/dataSources/{dataSourceId}/dataPointChanges',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'dataSourceId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'limit' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

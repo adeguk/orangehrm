@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,6 +20,9 @@ class Google_Service_Compute_AccessConfig extends Google_Model
   public $kind;
   public $name;
   public $natIP;
+  public $networkTier;
+  public $publicPtrDomainName;
+  public $setPublicPtr;
   public $type;
 
   public function setKind($kind)
@@ -45,6 +48,30 @@ class Google_Service_Compute_AccessConfig extends Google_Model
   public function getNatIP()
   {
     return $this->natIP;
+  }
+  public function setNetworkTier($networkTier)
+  {
+    $this->networkTier = $networkTier;
+  }
+  public function getNetworkTier()
+  {
+    return $this->networkTier;
+  }
+  public function setPublicPtrDomainName($publicPtrDomainName)
+  {
+    $this->publicPtrDomainName = $publicPtrDomainName;
+  }
+  public function getPublicPtrDomainName()
+  {
+    return $this->publicPtrDomainName;
+  }
+  public function setSetPublicPtr($setPublicPtr)
+  {
+    $this->setPublicPtr = $setPublicPtr;
+  }
+  public function getSetPublicPtr()
+  {
+    return $this->setPublicPtr;
   }
   public function setType($type)
   {

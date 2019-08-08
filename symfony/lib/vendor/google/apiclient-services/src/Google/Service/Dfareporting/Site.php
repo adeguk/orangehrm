@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -34,6 +34,8 @@ class Google_Service_Dfareporting_Site extends Google_Collection
   protected $siteSettingsType = 'Google_Service_Dfareporting_SiteSettings';
   protected $siteSettingsDataType = '';
   public $subaccountId;
+  protected $videoSettingsType = 'Google_Service_Dfareporting_SiteVideoSettings';
+  protected $videoSettingsDataType = '';
 
   public function setAccountId($accountId)
   {
@@ -59,10 +61,16 @@ class Google_Service_Dfareporting_Site extends Google_Collection
   {
     return $this->directorySiteId;
   }
+  /**
+   * @param Google_Service_Dfareporting_DimensionValue
+   */
   public function setDirectorySiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
   {
     $this->directorySiteIdDimensionValue = $directorySiteIdDimensionValue;
   }
+  /**
+   * @return Google_Service_Dfareporting_DimensionValue
+   */
   public function getDirectorySiteIdDimensionValue()
   {
     return $this->directorySiteIdDimensionValue;
@@ -75,10 +83,16 @@ class Google_Service_Dfareporting_Site extends Google_Collection
   {
     return $this->id;
   }
+  /**
+   * @param Google_Service_Dfareporting_DimensionValue
+   */
   public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
+  /**
+   * @return Google_Service_Dfareporting_DimensionValue
+   */
   public function getIdDimensionValue()
   {
     return $this->idDimensionValue;
@@ -107,18 +121,30 @@ class Google_Service_Dfareporting_Site extends Google_Collection
   {
     return $this->name;
   }
+  /**
+   * @param Google_Service_Dfareporting_SiteContact
+   */
   public function setSiteContacts($siteContacts)
   {
     $this->siteContacts = $siteContacts;
   }
+  /**
+   * @return Google_Service_Dfareporting_SiteContact
+   */
   public function getSiteContacts()
   {
     return $this->siteContacts;
   }
+  /**
+   * @param Google_Service_Dfareporting_SiteSettings
+   */
   public function setSiteSettings(Google_Service_Dfareporting_SiteSettings $siteSettings)
   {
     $this->siteSettings = $siteSettings;
   }
+  /**
+   * @return Google_Service_Dfareporting_SiteSettings
+   */
   public function getSiteSettings()
   {
     return $this->siteSettings;
@@ -130,5 +156,19 @@ class Google_Service_Dfareporting_Site extends Google_Collection
   public function getSubaccountId()
   {
     return $this->subaccountId;
+  }
+  /**
+   * @param Google_Service_Dfareporting_SiteVideoSettings
+   */
+  public function setVideoSettings(Google_Service_Dfareporting_SiteVideoSettings $videoSettings)
+  {
+    $this->videoSettings = $videoSettings;
+  }
+  /**
+   * @return Google_Service_Dfareporting_SiteVideoSettings
+   */
+  public function getVideoSettings()
+  {
+    return $this->videoSettings;
   }
 }

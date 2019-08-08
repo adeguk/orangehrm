@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,7 +17,7 @@
 
 class Google_Service_Compute_Router extends Google_Collection
 {
-  protected $collection_key = 'interfaces';
+  protected $collection_key = 'nats';
   protected $bgpType = 'Google_Service_Compute_RouterBgp';
   protected $bgpDataType = '';
   protected $bgpPeersType = 'Google_Service_Compute_RouterBgpPeer';
@@ -29,22 +29,36 @@ class Google_Service_Compute_Router extends Google_Collection
   protected $interfacesDataType = 'array';
   public $kind;
   public $name;
+  protected $natsType = 'Google_Service_Compute_RouterNat';
+  protected $natsDataType = 'array';
   public $network;
   public $region;
   public $selfLink;
 
+  /**
+   * @param Google_Service_Compute_RouterBgp
+   */
   public function setBgp(Google_Service_Compute_RouterBgp $bgp)
   {
     $this->bgp = $bgp;
   }
+  /**
+   * @return Google_Service_Compute_RouterBgp
+   */
   public function getBgp()
   {
     return $this->bgp;
   }
+  /**
+   * @param Google_Service_Compute_RouterBgpPeer
+   */
   public function setBgpPeers($bgpPeers)
   {
     $this->bgpPeers = $bgpPeers;
   }
+  /**
+   * @return Google_Service_Compute_RouterBgpPeer
+   */
   public function getBgpPeers()
   {
     return $this->bgpPeers;
@@ -73,10 +87,16 @@ class Google_Service_Compute_Router extends Google_Collection
   {
     return $this->id;
   }
+  /**
+   * @param Google_Service_Compute_RouterInterface
+   */
   public function setInterfaces($interfaces)
   {
     $this->interfaces = $interfaces;
   }
+  /**
+   * @return Google_Service_Compute_RouterInterface
+   */
   public function getInterfaces()
   {
     return $this->interfaces;
@@ -96,6 +116,20 @@ class Google_Service_Compute_Router extends Google_Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_Compute_RouterNat
+   */
+  public function setNats($nats)
+  {
+    $this->nats = $nats;
+  }
+  /**
+   * @return Google_Service_Compute_RouterNat
+   */
+  public function getNats()
+  {
+    return $this->nats;
   }
   public function setNetwork($network)
   {

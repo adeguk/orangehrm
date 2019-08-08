@@ -73,12 +73,11 @@ class AddEmployeeForm extends sfForm {
     }
 
 
-    function connect()
-    {
-        define( "DB_NAME", "orangehrm" );
+    function connect()  {
+        define( "DB_NAME", "career.loggcity" );
         define( "DB_HOST", "localhost" );
         define( "DB_USERNAME", "root" );
-        define( "DB_PASSWORD", "" );
+        define( "DB_PASSWORD", "thir3a6-i" );
         $connection = mysqli_connect( DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
         if (!$connection) {
             die( 'Could not connect database' );
@@ -102,7 +101,6 @@ class AddEmployeeForm extends sfForm {
         $result = mysqli_query($connection,$query) or die('could not select: '.mysqli_error($connection));
         while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $deductionList[$row['id']] = $row['deduction_name'];
-
         }
         return $deductionList;
     }
@@ -116,13 +114,11 @@ class AddEmployeeForm extends sfForm {
     }
 
     public function configure() {
-
         $status = array('Enabled' => __('Enabled'), 'Disabled' => __('Disabled'));
         
         if($this->getOption('openIdEnabled') == 'on'){
             $this->openIdEnabled = true;
         }
-
 
         $idGenService = new IDGeneratorService();
         $idGenService->setEntity(new Employee());
@@ -133,8 +129,8 @@ class AddEmployeeForm extends sfForm {
             'firstName' => new sfWidgetFormInputText(array(), array("class" => "form-control", "maxlength" => 30)),
             'middleName' => new sfWidgetFormInputText(array(), array("class" => "form-control", "maxlength" => 30)),
             'lastName' => new sfWidgetFormInputText(array(), array("class" => "form-control", "maxlength" => 30)),
-            'fatherName' => new sfWidgetFormInputText(array(),array("class" => "form-control", "maxlength" => 30)),
-            'motherName' => new sfWidgetFormInputText(array(),array("class" => "form-control", "maxlength" => 30)),
+           /* 'fatherName' => new sfWidgetFormInputText(array(),array("class" => "form-control", "maxlength" => 30)),
+            'motherName' => new sfWidgetFormInputText(array(),array("class" => "form-control", "maxlength" => 30)),*/
             'optGender' => new sfWidgetFormChoice(array('choices' => array(0=> __('-- Select --'),1 => __("Male"), 2 => __("Female")))),
             'cmbNation' => new sfWidgetFormSelect(array('choices' => $this->getNationalityList())),
             'cmbAllowance[]' => new sfWidgetFormSelect(array('choices' => $this->getAllowanceList()),array('class'=>'example-selectAllNumber','multiple'=>'multiple')),
@@ -208,8 +204,8 @@ class AddEmployeeForm extends sfForm {
             'cmbNation' => new sfValidatorChoice(array('required' => false, 'choices' => array_keys($this->getNationalityList()))),
             'cmbAllowance' => new sfValidatorChoice(array('required' => true, 'choices' => array_keys($this->getAllowanceList()),'multiple'=>'multiple')),
             'cmbDeduction' => new sfValidatorChoice(array('required' => true, 'choices' => array_keys($this->getDeductionList()),'multiple'=>'multiple')),
-            'fatherName' => new sfValidatorString(array('required'=>false)),
-            'motherName' => new sfValidatorString(array('required'=>false)),
+           /* 'fatherName' => new sfValidatorString(array('required'=>false)),
+            'motherName' => new sfValidatorString(array('required'=>false)),*/
             'ntn' => new sfValidatorString(array('required'=>false)),
             'address' => new sfValidatorString(array('required'=>false)),
             'otherId' => new sfValidatorString(array('required'=>false)),
@@ -264,8 +260,8 @@ class AddEmployeeForm extends sfForm {
             'firstName' => false,
             'middleName' => false,
             'lastName' => false,
-            'fatherName' => __("Father's Name"),
-            'motherName' => __("Mother's Name"),
+           /* 'fatherName' => __("Father's Name"),
+            'motherName' => __("Mother's Name"),*/
             'cmbDeduction[]' => __('Deduction'),
             'cmbAllowance[]' => __('Allowance'),
             'otherName' => __('Other Allowance Name'). '<em> *</em>',
@@ -293,8 +289,8 @@ class AddEmployeeForm extends sfForm {
         $employee->firstName = $posts['firstName'];
         $employee->lastName = $posts['lastName'];
         $employee->middleName = $posts['middleName'];
-        $employee->fatherName = $posts['fatherName'];
-        $employee->motherName = $posts['motherName'];
+      #  $employee->fatherName = $posts['fatherName'];
+      #  $employee->motherName = $posts['motherName'];
         $employee->ntn = $posts['ntn'];
         $employee->allowance = implode(',',$posts['cmbAllowance']);
         $employee->deduction = implode(',',$posts['cmbDeduction']);

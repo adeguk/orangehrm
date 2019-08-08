@@ -482,8 +482,6 @@ function include_title()
   echo content_tag('title', $title)."\n";
 }
 
-
-
 /**
  * Returns <script> tags for all javascripts configured in view.yml or added to the response object.
  *

@@ -224,7 +224,7 @@ class UnitTestCase
                 $newFails[$fail] = $fail;
             }
         }
-        return $newFails;;
+        return $newFails;
     }
 
     public function getFixedFails()
@@ -237,7 +237,7 @@ class UnitTestCase
                 $fixed[$fail] = $fail;
             }
         }
-        return $fixed;;
+        return $fixed;
     }
 
     public function getNumNewFails()

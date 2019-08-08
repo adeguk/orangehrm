@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -21,6 +21,7 @@ class Google_Service_Dataflow_LeaseWorkItemRequest extends Google_Collection
   public $currentWorkerTime;
   public $location;
   public $requestedLeaseDuration;
+  public $unifiedWorkerRequest;
   public $workItemTypes;
   public $workerCapabilities;
   public $workerId;
@@ -48,6 +49,14 @@ class Google_Service_Dataflow_LeaseWorkItemRequest extends Google_Collection
   public function getRequestedLeaseDuration()
   {
     return $this->requestedLeaseDuration;
+  }
+  public function setUnifiedWorkerRequest($unifiedWorkerRequest)
+  {
+    $this->unifiedWorkerRequest = $unifiedWorkerRequest;
+  }
+  public function getUnifiedWorkerRequest()
+  {
+    return $this->unifiedWorkerRequest;
   }
   public function setWorkItemTypes($workItemTypes)
   {

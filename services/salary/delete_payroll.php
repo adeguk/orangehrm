@@ -1,8 +1,8 @@
 <?php
-define("DB_HOST", "localhost");
-define("DB_NAME", "orangehrm");
-define("DB_USERNAME", "root");
-define("DB_PASSWORD", "");
+define( "DB_HOST", "localhost" );
+define( "DB_NAME", "career.loggcity" );
+define( "DB_USERNAME", "root" );
+define( "DB_PASSWORD", "thir3a6-i" );
 
 function connect(){
 

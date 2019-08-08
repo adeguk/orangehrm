@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -78,18 +78,39 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsOperations extends Google_
     return $this->call('get', array($params), "Google_Service_Dataproc_Operation");
   }
   /**
+   * Gets the access control policy for a resource. Returns an empty policy if the
+   * resource exists and does not have a policy set. (operations.getIamPolicy)
+   *
+   * @param string $resource REQUIRED: The resource for which the policy is being
+   * requested. See the operation documentation for the appropriate value for this
+   * field.
+   * @param Google_Service_Dataproc_GetIamPolicyRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_Policy
+   */
+  public function getIamPolicy($resource, Google_Service_Dataproc_GetIamPolicyRequest $postBody, $optParams = array())
+  {
+    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('getIamPolicy', array($params), "Google_Service_Dataproc_Policy");
+  }
+  /**
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
-   * binding below allows API services to override the binding to use different
-   * resource name schemes, such as users/operations.
+   * binding allows API services to override the binding to use different resource
+   * name schemes, such as users/operations. To override the binding, API services
+   * can add a binding such as "/v1/{name=users}/operations" to their service
+   * configuration. For backwards compatibility, the default name includes the
+   * operations collection id, however overriding users must ensure the name
+   * binding is the parent resource, without the operations collection id.
    * (operations.listProjectsRegionsOperations)
    *
-   * @param string $name The name of the operation collection.
+   * @param string $name The name of the operation's parent resource.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize The standard list page size.
    * @opt_param string filter The standard list filter.
    * @opt_param string pageToken The standard list page token.
+   * @opt_param int pageSize The standard list page size.
    * @return Google_Service_Dataproc_ListOperationsResponse
    */
   public function listProjectsRegionsOperations($name, $optParams = array())
@@ -97,5 +118,43 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsOperations extends Google_
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_Dataproc_ListOperationsResponse");
+  }
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy. (operations.setIamPolicy)
+   *
+   * @param string $resource REQUIRED: The resource for which the policy is being
+   * specified. See the operation documentation for the appropriate value for this
+   * field.
+   * @param Google_Service_Dataproc_SetIamPolicyRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_Policy
+   */
+  public function setIamPolicy($resource, Google_Service_Dataproc_SetIamPolicyRequest $postBody, $optParams = array())
+  {
+    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('setIamPolicy', array($params), "Google_Service_Dataproc_Policy");
+  }
+  /**
+   * Returns permissions that a caller has on the specified resource. If the
+   * resource does not exist, this will return an empty set of permissions, not a
+   * NOT_FOUND error.Note: This operation is designed to be used for building
+   * permission-aware UIs and command-line tools, not for authorization checking.
+   * This operation may "fail open" without warning.
+   * (operations.testIamPermissions)
+   *
+   * @param string $resource REQUIRED: The resource for which the policy detail is
+   * being requested. See the operation documentation for the appropriate value
+   * for this field.
+   * @param Google_Service_Dataproc_TestIamPermissionsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_TestIamPermissionsResponse
+   */
+  public function testIamPermissions($resource, Google_Service_Dataproc_TestIamPermissionsRequest $postBody, $optParams = array())
+  {
+    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('testIamPermissions', array($params), "Google_Service_Dataproc_TestIamPermissionsResponse");
   }
 }

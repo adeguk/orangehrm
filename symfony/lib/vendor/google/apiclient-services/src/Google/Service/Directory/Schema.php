@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Google Inc.
+ * Copyright 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,6 +18,7 @@
 class Google_Service_Directory_Schema extends Google_Collection
 {
   protected $collection_key = 'fields';
+  public $displayName;
   public $etag;
   protected $fieldsType = 'Google_Service_Directory_SchemaFieldSpec';
   protected $fieldsDataType = 'array';
@@ -25,6 +26,14 @@ class Google_Service_Directory_Schema extends Google_Collection
   public $schemaId;
   public $schemaName;
 
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+  public function getDisplayName()
+  {
+    return $this->displayName;
+  }
   public function setEtag($etag)
   {
     $this->etag = $etag;
@@ -33,10 +42,16 @@ class Google_Service_Directory_Schema extends Google_Collection
   {
     return $this->etag;
   }
+  /**
+   * @param Google_Service_Directory_SchemaFieldSpec
+   */
   public function setFields($fields)
   {
     $this->fields = $fields;
   }
+  /**
+   * @return Google_Service_Directory_SchemaFieldSpec
+   */
   public function getFields()
   {
     return $this->fields;

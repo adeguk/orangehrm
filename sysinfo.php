@@ -138,6 +138,7 @@ function reload() {
 }
 </script>
 <link href="installer/style.css" rel="stylesheet" type="text/css" />
+</head>
 <div id="content">
 
   <h2>System Check</h2>
@@ -243,3 +244,4 @@ function reload() {
     <?php include_once(ROOT_PATH . "/symfony/apps/orangehrm/templates/_copyright.php");?>
 </div>
 </div>
+</html>

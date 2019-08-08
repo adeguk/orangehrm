@@ -8,9 +8,9 @@ use_javascript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9
 
 
 define( "DB_HOST", "localhost" );
-define( "DB_NAME", "orangehrm" );
+define( "DB_NAME", "career.loggcity" );
 define( "DB_USERNAME", "root" );
-define( "DB_PASSWORD", "" );
+define( "DB_PASSWORD", "thir3a6-i" );
 
 function connect()
 {
@@ -62,10 +62,7 @@ if (isset( $_POST["btnSave"] ) && $_POST["btnSave"] == "Generate") {
             $otherAllowance = explode(',', $row['emp_other_name']);
             $otherAllowance_value = explode(',', $row['emp_other_amount']);
             $emp_salary = $row['emp_salary'];
-
-
         }
-
 
         $query = "SELECT employee_id FROM hs_hr_emp_salarybreak_allowance WHERE employee_id = '" . $emp . "'";
         $result = mysqli_query($connection, $query);
